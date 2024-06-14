@@ -1,3 +1,3 @@
-export default defineConfig({
-  base: '/portfolio/'
-});
+module.exports = {
+    publicPath: '/portfolio/'
+}
