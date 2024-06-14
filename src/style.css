@@ -1,3 +1,9 @@
+@import "src/fonts.css";
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 }
@@ -7,34 +13,4 @@ canvas {
   top: 0;
   margin: 0;
   z-index: -1000;
-}
-
-header>nav {
-  display: flex;
-  width: 100%;
-  background-color: black;
-  justify-content: flex-end;
-}
-
-header>nav>ul {
-  all: unset;
-  display: flex;
-  justify-self: center;
-  gap: 2rem;
-}
-
-ul>li {
-  all: unset;
-  color: white;
-  text-transform: uppercase;
-}
-
-ul>li>a {
-  all: unset;
-  font-size: 2.5rem;
-}
-
-ul>li:hover {
-  background-color: white;
-  color: black;
 }
