@@ -1,5 +1,5 @@
-module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/portfolio/' // Replace with your GitHub repo name
-    : '/'
-};
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  transpileDependencies: true,
+  publicPath: process.env.NODE_ENV === "production" ? "/vue-deploy/" : "/",
+})
