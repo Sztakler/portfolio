@@ -54,10 +54,6 @@ header>nav {
   font-size: 2.5rem;
 }
 
-header>nav>.logo {
-  all: unset;
-  padding-left: 0.5rem;
-}
 
 header>nav>ul {
   all: unset;
@@ -71,6 +67,9 @@ header>nav>ul {
 li {
   all: unset;
   padding: 0.5rem;
+  background-color: #e9fafc00;
+  transition: opacity 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
 }
 
 li>a {
@@ -78,10 +77,6 @@ li>a {
   cursor: pointer;
 }
 
-.logo {
-  justify-self: flex-start;
-  align-self: flex-start;
-}
 
 ul>li:hover {
   background-color: #e9fafc88;
@@ -103,6 +98,10 @@ ul>li:active {
   width: 100%;
   height: 2px;
   background-color: #ffffff;
+}
+
+.home-link {
+  transition: color 0.1s ease-in-out;
 }
 
 
