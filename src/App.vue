@@ -145,7 +145,7 @@ main>header>h1 {
   padding: 0;
   font-size: 6.5vw;
   position: relative;
-  color: #FFCAC9;
+  color: #EA9385;
   mix-blend-mode: difference;
   filter: invert();
   line-height: 100%;
