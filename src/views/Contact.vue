@@ -7,18 +7,20 @@
       reach out on these
       platforms:</h2>
     <address>
-      <a href="mailto:krystian.jasionek@protonmail.com">
-        <p>
-          <i class="fa-regular fa-envelope"></i> krystian.jasionek@protonmail.com
-        </p>
-      </a>
-      <a href="https://github.com/Sztakler" target="_blank">
-        <p><i class="fab fa-github"></i> Metarth</p>
-      </a>
+      <div class="socials">
+        <a href="mailto:krystian.jasionek@protonmail.com">
+          <p>
+            <i class="fa-regular fa-envelope"></i> krystian.jasionek@protonmail.com
+          </p>
+        </a>
+        <a href="https://github.com/Sztakler" target="_blank">
+          <p><i class="fab fa-github"></i> Metarth</p>
+        </a>
+      </div>
 
       <footer>
         <a href="https://www.openstreetmap.org/#map=12/51.1264/16.9488" target="_blank">
-          <p><i class="fa-regular fa-map"></i> [Wrocław, Poland]</p>
+          <p><i class="fa-regular fa-map"></i> Wrocław, Poland</p>
         </a>
       </footer>
     </address>
@@ -32,7 +34,7 @@ article {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 1rem;
+  gap: 2rem;
   color: white;
   font-family: "Red Hat Display", sans-serif;
   font-style: normal;
@@ -48,6 +50,9 @@ h2 {
 address {
   font-size: 2rem;
   text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 footer {
