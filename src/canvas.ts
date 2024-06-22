@@ -395,6 +395,7 @@ float snoise(vec3 v)
           vec4 baseColor = vec4(0.3019, 0.0588, 0.1843, 1.0);
           // vec4 invColor = vec4(0.70, 0.94, 0.82, 1.0);
           vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
+          // vec4 invColor = vec4(0.439, 0.1843, 0.1882, 1.0);
           vec4 color = vec4(0.46, 0.07, 0.09, 1.0);
 
           float pn = pnoise(vUv + time * 0.1, vec3(10.));
@@ -473,23 +474,34 @@ function onWindowResize() {
 }
 
 function animate() {
-
-  // mesh.rotation.x += 0.005;
-  // mesh.rotation.y += 0.01;
-
   timer.update();
-
 
   material.uniforms.time.value = timer.getElapsed();
 
-  // renderer.render(scene, camera);
   composer.render();
-
 }
 
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
+import { createMemoryHistory, createRouter } from 'vue-router'
 
-createApp(App).mount('#app')
+import AboutMe from './views/AboutMe.vue';
+import Contact from './views/Contact.vue';
+import Projects from './views/Projects.vue';
+import Empty from './views/Empty.vue';
+
+const routes = [
+  { path: '/', component: Empty },
+  { path: '/about-me', component: AboutMe },
+  { path: '/projects', component: Projects},
+  { path: '/contact', component: Contact},
+]
+
+const router = createRouter({
+  history: createMemoryHistory(),
+  routes,
+})
+
+createApp(App).use(router).mount('#app')
 

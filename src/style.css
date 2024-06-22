@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "PPMonumentExtended-Black";
+  src:
+    local("PPMonumentExtended-Black"),
+    url("./assets/fonts/PPMonumentExtended-Black.otf") format("opentype");
+}
+
+.monumentextended-black {
+  font-family: "PPMonumentExtended-Black", sans-serif;
+  font-style: normal;
+}
+
 .silkscreen-regular {
   font-family: "Silkscreen", sans-serif;
   font-weight: 400;
@@ -43,6 +55,7 @@
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 canvas {
