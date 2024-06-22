@@ -394,8 +394,8 @@ float snoise(vec3 v)
           cel = cel * cel2 * 1.8;
           vec4 baseColor = vec4(0.3019, 0.0588, 0.1843, 1.0);
           // vec4 invColor = vec4(0.70, 0.94, 0.82, 1.0);
-          vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
-          // vec4 invColor = vec4(0.439, 0.1843, 0.1882, 1.0);
+          // vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
+          vec4 invColor = vec4(0.839, 0.239, 0.145, 1.0);
           vec4 color = vec4(0.46, 0.07, 0.09, 1.0);
 
           float pn = pnoise(vUv + time * 0.1, vec3(10.));
@@ -403,6 +403,7 @@ float snoise(vec3 v)
           gl_FragColor = invColor * vec4(cel, 0.75 + (sin(time) + 1.0) / 8.0, 1.0);
           gl_FragColor += vec4(pn, pn, pn, 1.0);
           gl_FragColor *= vec4(random(vUv.yz), random(vUv.xy), random(vUv.xy), 1.0) + 0.2;
+
 
 
           
