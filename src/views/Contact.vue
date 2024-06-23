@@ -1,4 +1,5 @@
 <script>
+export default {}
 </script>
 
 <template>
@@ -19,6 +20,7 @@
       </div>
 
       <footer>
+        <h2>I currently live in:</h2>
         <a href="https://www.openstreetmap.org/#map=12/51.1264/16.9488" target="_blank">
           <p><i class="fa-regular fa-map"></i> Wrocław, Poland</p>
         </a>
@@ -34,7 +36,7 @@ article {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2rem;
+  gap: 1rem;
   color: white;
   font-family: "Red Hat Display", sans-serif;
   font-style: normal;
@@ -42,22 +44,26 @@ article {
 
 h2 {
   font-size: 2.5rem;
+  font-style: normal;
   max-width: 60ch;
   text-align: end;
   margin: 0;
 }
 
 address {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: start;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 4rem;
 }
 
 footer {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 p {
