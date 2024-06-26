@@ -64,3 +64,36 @@ canvas {
   margin: 0;
   z-index: -1000;
 }
+
+h2 {
+  font-size: 2rem;
+  font-style: normal;
+  max-width: 60ch;
+  text-align: end;
+  margin: 0;
+  color: white;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  color: white;
+  font-family: "Red Hat Display", sans-serif;
+  font-style: normal;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: underline;
+  color: inherit;
+  font-style: normal;
+}
+
+a:hover {
+  opacity: 70%;
+}

@@ -4,9 +4,11 @@ export default {}
 
 <template>
   <article>
-    <h2>If you want to have a talk with me or take a look at my projects, feel free to
-      reach out on these
-      platforms:</h2>
+    <header>
+      <h2>If you want to have a talk with me or take a look at my projects, feel free to
+        reach out on these
+        platforms:</h2>
+    </header>
     <address>
       <div class="socials">
         <a href="mailto:krystian.jasionek@protonmail.com">
@@ -32,26 +34,10 @@ export default {}
 <style scoped>
 @import "../style.css";
 
-article {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
-  color: white;
-  font-family: "Red Hat Display", sans-serif;
-  font-style: normal;
-}
 
-h2 {
-  font-size: 2.5rem;
-  font-style: normal;
-  max-width: 60ch;
-  text-align: end;
-  margin: 0;
-}
 
 address {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: start;
   display: flex;
   flex-direction: column;
@@ -59,7 +45,7 @@ address {
 }
 
 footer {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: start;
   display: flex;
   flex-direction: column;

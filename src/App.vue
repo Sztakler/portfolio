@@ -21,12 +21,12 @@
 
   <main>
     <header>
-      <h1 class="monumentextended-black">
-        <RouterLink to="/" active-class="home-link-active" class="home-link">
-          Krystian Jasionek
-          <div class="subtitle monumentextended-black">{Designer and Developer}</div>
-        </RouterLink>
-      </h1>
+      <!-- <h1 class="monumentextended-black"> -->
+        <!-- <RouterLink to="/" active-class="home-link-active" class="home-link"> -->
+          <!-- Krystian Jasionek -->
+          <!-- <div class="subtitle monumentextended-black">{Designer and Developer}</div> -->
+        <!-- </RouterLink> -->
+      <!-- </h1> -->
     </header>
     <section id="router-view-section">
       <RouterView />
@@ -163,8 +163,9 @@ main>header>h1 {
 
 #router-view-section {
   position: fixed;
-  left: 50%;
-  top: 30%;
+  background-color: rgb(22, 22, 22);
+  left: 30%;
+  top: 20%;
   padding-right: 5rem;
 }
 </style>
