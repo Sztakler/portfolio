@@ -43,7 +43,7 @@ section {
 
 .project-year {
   font-size: 1rem;
-  color: #eeeeee;
+  color: #808080;
   align-self: flex-start;
   margin-top: 1rem;
 }

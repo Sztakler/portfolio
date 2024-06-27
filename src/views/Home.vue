@@ -5,8 +5,8 @@ export default {}
 <template>
   <header>
     <h1 class="monumentextended-black">
-      <RouterLink>Krystian Jasionek</RouterLink>
-      <div class="subtitle monumentextended-black">{Designer and Developer}</div>
+      Krystian Jasionek
+      <div :class="'subtitle monumentextended-black'">{Designer and Developer}</div>
     </h1>
   </header>
 </template>
