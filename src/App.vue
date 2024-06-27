@@ -8,6 +8,8 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 import { useRoute } from 'vue-router';
 
+import {ref} from 'vue';
+
 import Home from './views/Home.vue';
 import AboutMe from './views/AboutMe.vue';
 import Contact from './views/Contact.vue';
@@ -23,6 +25,7 @@ let material: THREE.ShaderMaterial;
 let geometry: THREE.BoxGeometry;
 
 const route = useRoute();
+const activeLink = ref('home');
 
 const timer = new Timer();
 
@@ -493,6 +496,10 @@ function animate() {
   }
 }
 
+function setActiveLink(link: String) {
+  activeLink.value = link;
+}
+
 </script>
 
 <template>
@@ -504,37 +511,20 @@ function animate() {
     <nav class="red-hat-display-semibold">
       <ul>
         <li>
-          <a href="#home">Home_</a>
+          <a :class="{active: activeLink === 'home'}" @click="setActiveLink('home')" href="#home">Home</a>
         </li>
         <li>
-          <a href="#about-me">About_me_</a>
+          <a :class="{active: activeLink === 'about-me'}" @click="setActiveLink('about-me')" href="#about-me">About Me</a>
         </li>
         <li>
-          <a href="#projects">Projects_</a>
+          <a :class="{active: activeLink === 'projects'}" @click="setActiveLink('projects')" href="#projects">Projects</a>
         </li>
         <li>
-          <a href="#contact">Contact_</a>
+          <a :class="{active: activeLink === 'contact'}" @click="setActiveLink('contact')" href="#contact">Contact</a>
         </li>
       </ul>
     </nav>
   </header>
-
-
-  <!-- <main>
-    <section id="home">
-      <Home />
-    </section>
-    <section  id="about-me" >
-      <AboutMe/>
-    </section>
-    <section id="projects">
-      <Projects />
-    </section>
-    <section id="contact">
-      <Contact/>      
-    </section>
-   
-  </main> -->
 
   <section id="home" class="bg-1">
     <Home />
@@ -599,8 +589,7 @@ header>nav {
   justify-content: flex-end;
   align-items: center;
   color: #ffffff;
-  text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 1.25rem;
 }
 
 
@@ -635,18 +624,23 @@ ul>li:active {
   opacity: 70%;
 }
 
-.router-link-active {
+.active {
   position: relative;
 }
 
-.router-link-active::after {
+a::after {
   position: absolute;
   content: '';
   top: 0;
   left: 0;
-  width: 100%;
+  width: 0;
   height: 2px;
   background-color: #ffffff;
+  transition: width 0.5s ease-in-out;
+}
+
+a.active::after {
+  width: 100%;
 }
 
 
