@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { Timer } from 'three/addons/misc/Timer.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
+// import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 import { useRoute } from 'vue-router';
@@ -498,7 +498,7 @@ function animate() {
   }
 }
 
-function setActiveLink(link: String) {
+function setActiveLink(link: string) {
   activeLink.value = link;
 }
 
