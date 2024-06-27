@@ -3,12 +3,15 @@ export default {}
 </script>
 
 <template>
-  <header>
+  <article>
+    <header>
     <h1 class="monumentextended-black">
-      Krystian Jasionek
-      <div :class="'subtitle monumentextended-black'">{Designer and Developer}</div>
+      <span>Krystian</span>
+      <span :class="'subtitle monumentextended-black'">{Designer_and_Developer}</span>
+      <span>Jasionek</span>
     </h1>
-  </header>
+  </header>    
+  </article>
 </template>
 
 <style scoped>
@@ -17,36 +20,38 @@ a {
   color: inherit;
 }
 
-
-main>header {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  text-transform: uppercase;
-  padding-left: 5rem;
-  position: absolute;
-  top: 1rem;
+article {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-main>header>h1 {
+header {
+  text-transform: uppercase;
+  width: 100%;
+}
+
+h1 {
   margin: 0;
   padding: 0;
-  font-size: 6.5vw;
-  position: relative;
-  color: #FFCAC9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12vw;
+  color: #b47978;
   mix-blend-mode: difference;
   filter: invert();
   line-height: 100%;
-  height: 100%;
-  width: fit-content;
 }
 
 .subtitle {
   all: unset;
   margin: 0;
-  font-size: 1.5vw;
-  position: absolute;
-  left: 85%;
-  top: 0;
-  color: #FFCAC9;
+  font-size: 1.25vw;
+  line-height: 80%;
+  letter-spacing: 2rem;
 }
 </style>

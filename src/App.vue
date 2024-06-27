@@ -8,6 +8,7 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 import { useRoute } from 'vue-router';
 
+import Home from './views/Home.vue';
 import AboutMe from './views/AboutMe.vue';
 import Contact from './views/Contact.vue';
 import Projects from './views/Projects.vue'; 
@@ -402,8 +403,8 @@ float snoise(vec3 v)
           cel = cel * cel2 * 1.8;
           vec4 baseColor = vec4(0.3019, 0.0588, 0.1843, 1.0);
           // vec4 invColor = vec4(0.70, 0.94, 0.82, 1.0);
-          // vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
-          vec4 invColor = vec4(0.839, 0.239, 0.145, 1.0);
+          vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
+          // vec4 invColor = vec4(0.839, 0.239, 0.145, 1.0);
           vec4 color = vec4(0.46, 0.07, 0.09, 1.0);
 
           float pn = pnoise(vUv + time * 0.1, vec3(10.));
@@ -492,69 +493,108 @@ function animate() {
   }
 }
 
-function extractNumbers(str) {
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charAt(i);
-    if (!isNaN(char) && char !== ' ') { // Check if character is a digit and not a space
-      result += char;
-    }
-  }
-  return result;
-}
-
 </script>
 
 <template>
+<a class="hidden" id="home">Home_</a>
+<a class="hidden" id="about-me">About_me_</a>
+<a class="hidden" id="projects">Projects_</a>
+<a class="hidden" id="contact">Contact_</a>
   <header>
     <nav class="red-hat-display-semibold">
       <ul>
         <li>
-          <RouterLink to="/about-me">About_me_</Routerlink>
+          <a href="#home">Home_</a>
         </li>
         <li>
-          <RouterLink to="/projects">Projects_</Routerlink>
+          <a href="#about-me">About_me_</a>
         </li>
         <li>
-          <RouterLink to="/contact">Contact_</Routerlink>
+          <a href="#projects">Projects_</a>
+        </li>
+        <li>
+          <a href="#contact">Contact_</a>
         </li>
       </ul>
     </nav>
   </header>
 
 
-  <main>
-    <header id="name">
-      <h1 class="monumentextended-black">
-        <RouterLink  to="/" active-class="home-link-active" class="home-link">
-          Krystian Jasionek
-          <div class="subtitle monumentextended-black">{Designer and Developer}</div>
-        </RouterLink>
-      </h1>
-    </header>
-    <section id="router-view-section">
-      <RouterView />
-      <AboutMe></AboutMe>
-      <Projects></Projects>
-      <Contact></Contact>
+  <!-- <main>
+    <section id="home">
+      <Home />
+    </section>
+    <section  id="about-me" >
+      <AboutMe/>
+    </section>
+    <section id="projects">
+      <Projects />
+    </section>
+    <section id="contact">
+      <Contact/>      
     </section>
    
-  </main>
+  </main> -->
+
+  <section id="home" class="bg-1">
+    <Home />
+  </section>
+  <section id="about-me" class="bg-2">
+      <AboutMe/>
+  </section>
+  <section id="projects" class="bg-3">
+      <Projects />
+  </section>
+  <section id="contact" class="bg-4">
+      <Contact/>      
+  </section>
 </template>
 
 <style scoped>
 @import "./style.css";
 
-a {
+.hidden {
+  display: none;
+}
+
+section{
+  height: 100vh;
+  pointer-events:none;
+}
+
+section:not(#home) {
+  background-color: #222222;
+  padding-top: 8rem;
+  transition: transform 0.45s cubic-bezier(0,0,0.21,1);
+}
+
+ a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
 }
 
 
+a[id="about-me"]:target ~ #about-me {
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+
+a[id="projects"]:target ~ #projects {
+  -webkit-transform: translate3d(0, -200%, 0);
+  transform: translate3d(0, -200%, 0);
+}
+
+a[id="contact"]:target ~ #contact {
+  -webkit-transform: translate3d(0, -300%, 0);
+  transform: translate3d(0, -300%, 0);
+}
+
 header>nav {
-  position: fixed;
   display: flex;
+  position: fixed;
+  z-index: 100;
+  top: 0;
   width: 100%;
   justify-content: flex-end;
   align-items: center;
@@ -609,15 +649,6 @@ ul>li:active {
   background-color: #ffffff;
 }
 
-.home-link {
-  transition: color 0.1s ease-in-out;
-}
-
-
-.home-link:hover {
-  color: #aaaaaa;
-  cursor: pointer;
-}
 
 .home-link:active {
   opacity: 60%;
@@ -633,33 +664,9 @@ ul>li:active {
 
 main {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-main>header {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  text-transform: uppercase;
-  padding-left: 5rem;
-  position: absolute;
-  top: 1rem;
-  max-width: 25%;
-}
-
-
-
-main>header>h1 {
-  /* margin: 0; */
-  padding: 0;
-  font-size: 6.5vw;
-  position: relative;
-  color: #EA9385;
-  mix-blend-mode: difference;
-  filter: invert();
-  line-height: 100%;
-  height: 100%;
-  width: fit-content;
-}
 
 .subtitle {
   all: unset;
@@ -668,13 +675,5 @@ main>header>h1 {
   position: absolute;
   left: 85%;
   top: 0;
-}
-
-#router-view-section {
-  position: fixed;
-  background-color: rgb(22, 22, 22);
-  left: 30%;
-  top: 20%;
-  padding-right: 5rem;
 }
 </style>

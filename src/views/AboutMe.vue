@@ -40,6 +40,10 @@ export default {}
 <style scoped>
 @import '../style.css';
 
+article {
+  height: 100vh;
+}
+
 header {
   width: 100%;
   display: flex;
