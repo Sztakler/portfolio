@@ -26,6 +26,8 @@ let geometry: THREE.BoxGeometry;
 
 const route = useRoute();
 const activeLink = ref('home');
+const navLinks = ref(["home", "about-me", "projects", "contact"]);
+const currentNavLinkIndex = ref(0);
 
 const timer = new Timer();
 
@@ -500,6 +502,19 @@ function setActiveLink(link: String) {
   activeLink.value = link;
 }
 
+window.addEventListener("wheel", (event) => {
+  let nextLink = 'home';
+
+  if (event.deltaY < 0 && currentNavLinkIndex.value > 0)
+    currentNavLinkIndex.value--;
+  else if (event.deltaY > 0 && currentNavLinkIndex.value < navLinks.value.length - 1)
+    currentNavLinkIndex.value++ 
+
+  nextLink = navLinks.value[currentNavLinkIndex.value]
+  setActiveLink(nextLink);
+  document.getElementById(nextLink + '-link')!.click();
+})
+
 </script>
 
 <template>
@@ -511,16 +526,16 @@ function setActiveLink(link: String) {
     <nav class="red-hat-display-semibold">
       <ul>
         <li>
-          <a :class="{active: activeLink === 'home'}" @click="setActiveLink('home')" href="#home">Home</a>
+          <a id="home-link" :class="{active: activeLink === 'home'}" @click="setActiveLink('home')" href="#home">Home</a>
         </li>
         <li>
-          <a :class="{active: activeLink === 'about-me'}" @click="setActiveLink('about-me')" href="#about-me">About Me</a>
+          <a id="about-me-link" :class="{active: activeLink === 'about-me'}" @click="setActiveLink('about-me')" href="#about-me">About Me</a>
         </li>
         <li>
-          <a :class="{active: activeLink === 'projects'}" @click="setActiveLink('projects')" href="#projects">Projects</a>
+          <a id="projects-link" :class="{active: activeLink === 'projects'}" @click="setActiveLink('projects')" href="#projects">Projects</a>
         </li>
         <li>
-          <a :class="{active: activeLink === 'contact'}" @click="setActiveLink('contact')" href="#contact">Contact</a>
+          <a id="contact-link" :class="{active: activeLink === 'contact'}" @click="setActiveLink('contact')" href="#contact">Contact</a>
         </li>
       </ul>
     </nav>
@@ -549,13 +564,15 @@ function setActiveLink(link: String) {
 
 section{
   height: 100vh;
-  pointer-events:none;
+  pointer-events: none;
 }
 
 section:not(#home) {
   background-color: #222222;
   padding-top: 8rem;
   transition: transform 0.45s cubic-bezier(0,0,0.21,1);
+  z-index: 100;
+  pointer-events: auto;
 }
 
  a {
