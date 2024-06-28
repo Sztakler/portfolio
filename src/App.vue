@@ -514,7 +514,6 @@ window.addEventListener("wheel", (event) => {
   setActiveLink(nextLink);
   document.getElementById(nextLink + '-link')!.click();
 })
-
 </script>
 
 <template>
@@ -672,12 +671,6 @@ a.active::after {
 .home-link-active::after {
   display: none;
 }
-
-main {
-  display: flex;
-  flex-direction: column;
-}
-
 
 .subtitle {
   all: unset;
