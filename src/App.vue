@@ -405,19 +405,18 @@ float snoise(vec3 v)
         void main() {
           vec2 cel = cellular(vUv.xyz + time * 0.13);
           vec2 cel2 = cellular(vUv.zyx + time * 0.04);
-          cel = cel * cel2 * 1.8;
-          vec4 baseColor = vec4(0.3019, 0.0588, 0.1843, 1.0);
+          cel = cel * cel2 * 1.2;
+          // vec4 invColor = vec4(0.3019, 0.0588, 0.1843, 1.0);
           // vec4 invColor = vec4(0.70, 0.94, 0.82, 1.0);
-          vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
+          // vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
           // vec4 invColor = vec4(0.839, 0.239, 0.145, 1.0);
-          vec4 color = vec4(0.46, 0.07, 0.09, 1.0);
+          vec4 invColor = vec4(0.76, 0.56, 0.24, 1.0);
 
-          float pn = pnoise(vUv + time * 0.1, vec3(10.));
+          float pn = pnoise(vUv + time * 0.1, vec3(10.)) + 2.2;
 
-          gl_FragColor = invColor * vec4(cel, 0.75 + (sin(time) + 1.0) / 8.0, 1.0);
-          gl_FragColor += vec4(pn, pn, pn, 1.0);
+          gl_FragColor = invColor * vec4(cel, 0.2 + (sin(time) + 1.0) / 8.0, 1.0);
+          gl_FragColor *= vec4(pn, pn, pn, 1.0);
           gl_FragColor *= vec4(random(vUv.yz), random(vUv.xy), random(vUv.xy), 1.0) + 0.2;
-
 
 
           
@@ -567,11 +566,12 @@ section{
 }
 
 section:not(#home) {
-  background-color: #222222;
+  background-color: #fafaf9;
   padding-top: 8rem;
   transition: transform 0.45s cubic-bezier(0,0,0.21,1);
   z-index: 100;
   pointer-events: auto;
+  
 }
 
  a {
@@ -604,7 +604,7 @@ header>nav {
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-  color: #ffffff;
+  color: #110d05;
   font-size: 1.25rem;
 }
 
@@ -621,7 +621,7 @@ header>nav>ul {
 li {
   all: unset;
   padding: 0.5rem;
-  background-color: #e9fafc00;
+  background-color: #ffffff00;
   transition: opacity 0.1s ease-in-out;
   transition: background-color 0.1s ease-in-out;
 }
@@ -633,7 +633,7 @@ li>a {
 
 
 ul>li:hover {
-  background-color: #e9fafc88;
+  background-color: #ffffff88;
 }
 
 ul>li:active {
@@ -651,7 +651,7 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #ffffff;
+  background-color: #110d05;
   transition: width 0.5s ease-in-out;
 }
 

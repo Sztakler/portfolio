@@ -41,7 +41,9 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 12vw;
-  color: #b47978;
+  /* /* color: #b47978; */
+  /* color: #b393b3; */
+  color: #c2903d;
   mix-blend-mode: difference;
   filter: invert();
   line-height: 100%;
