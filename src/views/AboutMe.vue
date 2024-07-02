@@ -44,6 +44,10 @@ article {
   height: 100vh;
 }
 
+p {
+  max-width: 60ch;
+}
+
 header {
   width: 100%;
   display: flex;
@@ -64,6 +68,7 @@ article {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 2rem;
 }
 
 section {
