@@ -524,22 +524,34 @@ window.addEventListener("wheel", (event) => {
   <header>
     <nav class="red-hat-display-semibold">
       <ul>
-        <li>
-          <a id="home-link" :class="{ active: activeLink === 'home' }" @click="setActiveLink('home')"
-            href="#home">Home</a>
-        </li>
-        <li>
-          <a id="about-me-link" :class="{ active: activeLink === 'about-me' }" @click="setActiveLink('about-me')"
-            href="#about-me">About Me</a>
-        </li>
-        <li>
-          <a id="projects-link" :class="{ active: activeLink === 'projects' }" @click="setActiveLink('projects')"
-            href="#projects">Projects</a>
-        </li>
-        <li>
-          <a id="contact-link" :class="{ active: activeLink === 'contact' }" @click="setActiveLink('contact')"
-            href="#contact">Contact</a>
-        </li>
+        <div class="left">
+          <li>
+            <a id="home-link" :class="{ active: activeLink === 'home' }" @click="setActiveLink('home')"
+              href="#home">Home_</a>
+          </li>
+        </div>
+        <div class="center">
+          <li class="socials">
+            <a href="https://github.com/Sztakler">
+              Github_</a>
+            {}
+            <a href="mailto:krystian.jasionek@protonmail.com">E-mail_</a>
+          </li>
+        </div>
+        <div class="right">
+          <li>
+            <a id="about-me-link" :class="{ active: activeLink === 'about-me' }" @click="setActiveLink('about-me')"
+              href="#about-me">About_Me_</a>
+          </li>
+          <li>
+            <a id="projects-link" :class="{ active: activeLink === 'projects' }" @click="setActiveLink('projects')"
+              href="#projects">Projects_</a>
+          </li>
+          <li>
+            <a id="contact-link" :class="{ active: activeLink === 'contact' }" @click="setActiveLink('contact')"
+              href="#contact">Contact_</a>
+          </li>
+        </div>
       </ul>
     </nav>
   </header>
@@ -619,9 +631,10 @@ header>nav>ul {
   all: unset;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
+
 }
 
 li {
@@ -686,5 +699,17 @@ a.active::after {
   position: absolute;
   left: 85%;
   top: 0;
+}
+
+
+.socials {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>
