@@ -513,6 +513,7 @@ window.addEventListener("wheel", (event) => {
   setActiveLink(nextLink);
   document.getElementById(nextLink + '-link')!.click();
 })
+
 </script>
 
 <template>
@@ -608,7 +609,8 @@ header>nav {
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-  color: #110d05;
+  /*  color: #110d05; */
+  color: #2f1400;
   font-size: 1.25rem;
 }
 
@@ -647,6 +649,7 @@ ul>li:active {
 .active {
   position: relative;
 }
+
 
 a::after {
   position: absolute;
