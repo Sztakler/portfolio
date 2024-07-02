@@ -8,16 +8,16 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 import { useRoute } from 'vue-router';
 
-import {ref} from 'vue';
+import { ref } from 'vue';
 
 import Home from './views/Home.vue';
 import AboutMe from './views/AboutMe.vue';
 import Contact from './views/Contact.vue';
-import Projects from './views/Projects.vue'; 
+import Projects from './views/Projects.vue';
 
 
 let camera: THREE.PerspectiveCamera;
-let scene: THREE.Scene; 
+let scene: THREE.Scene;
 let renderer: THREE.WebGLRenderer;
 let composer: EffectComposer;
 let mesh: THREE.Mesh;
@@ -405,17 +405,17 @@ float snoise(vec3 v)
         void main() {
           vec2 cel = cellular(vUv.xyz + time * 0.13);
           vec2 cel2 = cellular(vUv.zyx + time * 0.04);
-          cel = cel * cel2 * 1.2;
+          cel = cel * cel2 * 1.8;
           // vec4 invColor = vec4(0.3019, 0.0588, 0.1843, 1.0);
           // vec4 invColor = vec4(0.70, 0.94, 0.82, 1.0);
-          // vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
+          vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
           // vec4 invColor = vec4(0.839, 0.239, 0.145, 1.0);
-          vec4 invColor = vec4(0.76, 0.56, 0.24, 1.0);
+          // vec4 invColor = vec4(0.76, 0.56, 0.24, 1.0);
 
-          float pn = pnoise(vUv + time * 0.1, vec3(10.)) + 2.2;
+          float pn = pnoise(vUv + time * 0.1, vec3(10.));
 
-          gl_FragColor = invColor * vec4(cel, 0.2 + (sin(time) + 1.0) / 8.0, 1.0);
-          gl_FragColor *= vec4(pn, pn, pn, 1.0);
+          gl_FragColor = invColor * vec4(cel, 0.75 + (sin(time) + 1.0) / 8.0, 1.0);
+          gl_FragColor += vec4(pn, pn, pn, 1.0);
           gl_FragColor *= vec4(random(vUv.yz), random(vUv.xy), random(vUv.xy), 1.0) + 0.2;
 
 
@@ -507,7 +507,7 @@ window.addEventListener("wheel", (event) => {
   if (event.deltaY < 0 && currentNavLinkIndex.value > 0)
     currentNavLinkIndex.value--;
   else if (event.deltaY > 0 && currentNavLinkIndex.value < navLinks.value.length - 1)
-    currentNavLinkIndex.value++ 
+    currentNavLinkIndex.value++
 
   nextLink = navLinks.value[currentNavLinkIndex.value]
   setActiveLink(nextLink);
@@ -516,24 +516,28 @@ window.addEventListener("wheel", (event) => {
 </script>
 
 <template>
-<a class="hidden" id="home">Home_</a>
-<a class="hidden" id="about-me">About_me_</a>
-<a class="hidden" id="projects">Projects_</a>
-<a class="hidden" id="contact">Contact_</a>
+  <a class="hidden" id="home">Home_</a>
+  <a class="hidden" id="about-me">About_me_</a>
+  <a class="hidden" id="projects">Projects_</a>
+  <a class="hidden" id="contact">Contact_</a>
   <header>
     <nav class="red-hat-display-semibold">
       <ul>
         <li>
-          <a id="home-link" :class="{active: activeLink === 'home'}" @click="setActiveLink('home')" href="#home">Home</a>
+          <a id="home-link" :class="{ active: activeLink === 'home' }" @click="setActiveLink('home')"
+            href="#home">Home</a>
         </li>
         <li>
-          <a id="about-me-link" :class="{active: activeLink === 'about-me'}" @click="setActiveLink('about-me')" href="#about-me">About Me</a>
+          <a id="about-me-link" :class="{ active: activeLink === 'about-me' }" @click="setActiveLink('about-me')"
+            href="#about-me">About Me</a>
         </li>
         <li>
-          <a id="projects-link" :class="{active: activeLink === 'projects'}" @click="setActiveLink('projects')" href="#projects">Projects</a>
+          <a id="projects-link" :class="{ active: activeLink === 'projects' }" @click="setActiveLink('projects')"
+            href="#projects">Projects</a>
         </li>
         <li>
-          <a id="contact-link" :class="{active: activeLink === 'contact'}" @click="setActiveLink('contact')" href="#contact">Contact</a>
+          <a id="contact-link" :class="{ active: activeLink === 'contact' }" @click="setActiveLink('contact')"
+            href="#contact">Contact</a>
         </li>
       </ul>
     </nav>
@@ -543,13 +547,13 @@ window.addEventListener("wheel", (event) => {
     <Home />
   </section>
   <section id="about-me" class="bg-2">
-      <AboutMe/>
+    <AboutMe />
   </section>
   <section id="projects" class="bg-3">
-      <Projects />
+    <Projects />
   </section>
   <section id="contact" class="bg-4">
-      <Contact/>      
+    <Contact />
   </section>
 </template>
 
@@ -560,7 +564,7 @@ window.addEventListener("wheel", (event) => {
   display: none;
 }
 
-section{
+section {
   height: 100vh;
   pointer-events: none;
 }
@@ -568,30 +572,30 @@ section{
 section:not(#home) {
   background-color: #fafaf9;
   padding-top: 8rem;
-  transition: transform 0.45s cubic-bezier(0,0,0.21,1);
+  transition: transform 0.45s cubic-bezier(0, 0, 0.21, 1);
   z-index: 100;
   pointer-events: auto;
-  
+
 }
 
- a {
+a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
 }
 
 
-a[id="about-me"]:target ~ #about-me {
+a[id="about-me"]:target~#about-me {
   -webkit-transform: translate3d(0, -100%, 0);
   transform: translate3d(0, -100%, 0);
 }
 
-a[id="projects"]:target ~ #projects {
+a[id="projects"]:target~#projects {
   -webkit-transform: translate3d(0, -200%, 0);
   transform: translate3d(0, -200%, 0);
 }
 
-a[id="contact"]:target ~ #contact {
+a[id="contact"]:target~#contact {
   -webkit-transform: translate3d(0, -300%, 0);
   transform: translate3d(0, -300%, 0);
 }

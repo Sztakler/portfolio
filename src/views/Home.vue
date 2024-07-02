@@ -5,12 +5,12 @@ export default {}
 <template>
   <article>
     <header>
-    <h1 class="monumentextended-black">
-      <span>Krystian</span>
-      <span :class="'subtitle monumentextended-black'">{Designer_and_Developer}</span>
-      <span>Jasionek</span>
-    </h1>
-  </header>    
+      <h1 class="monumentextended-black">
+        <span>Krystian</span>
+        <span :class="'subtitle monumentextended-black'">{Designer_and_Developer}</span>
+        <span>Jasionek</span>
+      </h1>
+    </header>
   </article>
 </template>
 
@@ -41,9 +41,7 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 12vw;
-  /* /* color: #b47978; */
-  /* color: #b393b3; */
-  color: #c2903d;
+  color: #4bb4ff;
   mix-blend-mode: difference;
   filter: invert();
   line-height: 100%;
