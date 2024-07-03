@@ -530,14 +530,6 @@ window.addEventListener("wheel", (event) => {
               href="#home">Home_</a>
           </li>
         </div>
-        <div class="center">
-          <li class="socials">
-            <a href="https://github.com/Sztakler">
-              Github_</a>
-            {}
-            <a href="mailto:krystian.jasionek@protonmail.com">E-mail_</a>
-          </li>
-        </div>
         <div class="right">
           <li>
             <a id="about-me-link" :class="{ active: activeLink === 'about-me' }" @click="setActiveLink('about-me')"
@@ -546,10 +538,6 @@ window.addEventListener("wheel", (event) => {
           <li>
             <a id="projects-link" :class="{ active: activeLink === 'projects' }" @click="setActiveLink('projects')"
               href="#projects">Projects_</a>
-          </li>
-          <li>
-            <a id="contact-link" :class="{ active: activeLink === 'contact' }" @click="setActiveLink('contact')"
-              href="#contact">Contact_</a>
           </li>
         </div>
       </ul>
@@ -568,6 +556,16 @@ window.addEventListener("wheel", (event) => {
   <section id="contact" class="bg-4">
     <Contact />
   </section>
+  <footer class="red-hat-display-semibold">
+    <li class="socials">
+      <a href="https://github.com/Sztakler">
+        Github_</a>
+    </li>
+    ||
+    <li>
+      <a href="mailto:krystian.jasionek@protonmail.com">E-mail_</a>
+    </li>
+  </footer>
 </template>
 
 <style scoped>
@@ -583,8 +581,8 @@ section {
 }
 
 section:not(#home) {
-  background-color: #fafaf9;
-  padding-top: 8rem;
+  background-color: #f9f9fa;
+  padding-top: 4rem;
   transition: transform 0.45s cubic-bezier(0, 0, 0.21, 1);
   z-index: 100;
   pointer-events: auto;
@@ -621,9 +619,9 @@ header>nav {
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-  /*  color: #110d05; */
   color: #2f1400;
   font-size: 1.25rem;
+  padding: 1rem;
 }
 
 
@@ -651,11 +649,11 @@ li>a {
 }
 
 
-ul>li:hover {
-  background-color: #ffffff88;
+li:hover {
+  background-color: #08080888;
 }
 
-ul>li:active {
+li:active {
   opacity: 70%;
 }
 
@@ -711,5 +709,19 @@ a.active::after {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  bottom: 0;
+  color: #2f1400;
+  font-size: 1rem;
+  padding: 1rem;
+  gap: 0.5rem;
 }
 </style>
