@@ -71,13 +71,13 @@ h2 {
   max-width: 60ch;
   text-align: end;
   margin: 0;
-  color: #110d05;
+  color: #050911;
 }
 
 article {
   display: flex;
   gap: 1rem;
-  color: #110d05;
+  color: #050911;
   font-family: "Red Hat Display", sans-serif;
   font-style: normal;
 }

@@ -416,7 +416,7 @@ float snoise(vec3 v)
 
           gl_FragColor = invColor * vec4(cel, 0.75 + (sin(time) + 1.0) / 8.0, 1.0);
           gl_FragColor += vec4(pn, pn, pn, 1.0);
-          gl_FragColor *= vec4(random(vUv.yz), random(vUv.xy), random(vUv.xy), 1.0) + 0.2;
+          // gl_FragColor *= vec4(random(vUv.yz), random(vUv.xy), random(vUv.xy), 1.0) + 0.2;
 
 
           
@@ -669,7 +669,7 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #110d05;
+  background-color: #050911;
   transition: width 0.5s ease-in-out;
 }
 

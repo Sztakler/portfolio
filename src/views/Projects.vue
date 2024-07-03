@@ -5,8 +5,8 @@ const mediaPrefix = "./assets/videos/";
 const currentMedia = ref("vagabondoro.jpg");
 const projects = ref({
   "vagabondoro": "vagabondoro.webm",
-  "ale-jazda": "popcat.webm",
-  "ugabuga": "luna_crunching.webm",
+  "ale-jazda": "alejazda.mp4",
+  "ugabuga": "objviewer.mp4",
   "default": "",
 });
 
@@ -40,8 +40,8 @@ const resetMedia = () => {
       <a href="https://github.com/Sztakler/opengl-objectviewer" target="_blank" class="project"
         @mouseover="updateMedia('ugabuga')" @mouseleave="resetMedia()">
         <span class="project-year">2021</span>
-        <span class="project-title">Uga buga</span>
-        <span class="project-category">Uga buga ratatata</span>
+        <span class="project-title">Objviewer</span>
+        <span class="project-category">OpenGL & C++</span>
       </a>
     </div>
     <aside class="media">
