@@ -521,28 +521,26 @@ window.addEventListener("wheel", (event) => {
   <a class="hidden" id="about-me">About_me_</a>
   <a class="hidden" id="projects">Projects_</a>
   <a class="hidden" id="contact">Contact_</a>
-  <header>
-    <nav class="red-hat-display-semibold">
-      <ul>
-        <div class="left">
-          <li>
-            <a id="home-link" :class="{ active: activeLink === 'home' }" @click="setActiveLink('home')"
-              href="#home">Home_</a>
-          </li>
-        </div>
-        <div class="right">
-          <li>
-            <a id="about-me-link" :class="{ active: activeLink === 'about-me' }" @click="setActiveLink('about-me')"
-              href="#about-me">About_Me_</a>
-          </li>
-          <li>
-            <a id="projects-link" :class="{ active: activeLink === 'projects' }" @click="setActiveLink('projects')"
-              href="#projects">Projects_</a>
-          </li>
-        </div>
-      </ul>
-    </nav>
-  </header>
+  <nav class="red-hat-display-semibold">
+    <ul>
+      <div class="left">
+        <li>
+          <a id="home-link" :class="{ active: activeLink === 'home' }" @click="setActiveLink('home')"
+            href="#home">Home_</a>
+        </li>
+      </div>
+      <div class="right">
+        <li>
+          <a id="about-me-link" :class="{ active: activeLink === 'about-me' }" @click="setActiveLink('about-me')"
+            href="#about-me">About_Me_</a>
+        </li>
+        <li>
+          <a id="projects-link" :class="{ active: activeLink === 'projects' }" @click="setActiveLink('projects')"
+            href="#projects">Projects_</a>
+        </li>
+      </div>
+    </ul>
+  </nav>
 
   <section id="home" class="bg-1">
     <Home />
@@ -576,7 +574,7 @@ window.addEventListener("wheel", (event) => {
 }
 
 section {
-  height: 100vh;
+  height: 110vh;
   pointer-events: none;
 }
 
@@ -611,12 +609,12 @@ a[id="contact"]:target~#contact {
   transform: translate3d(0, -300%, 0);
 }
 
-header>nav {
+nav {
   display: flex;
   position: fixed;
   z-index: 100;
   top: 0;
-  width: 100%;
+  width: 100vw;
   justify-content: flex-end;
   align-items: center;
   color: #2f1400;
@@ -625,7 +623,7 @@ header>nav {
 }
 
 
-header>nav>ul {
+nav>ul {
   all: unset;
   width: 100%;
   display: flex;
@@ -717,11 +715,18 @@ footer {
   align-items: center;
   position: fixed;
   z-index: 100;
-  width: 100%;
+  width: 100vw;
   bottom: 0;
   color: #2f1400;
   font-size: 1rem;
   padding: 1rem;
   gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  nav {
+    font-size: 1.2rem;
+    width: 100vw;
+  }
 }
 </style>

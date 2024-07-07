@@ -25,22 +25,28 @@ const resetMedia = () => {
     <div class="projects">
       <a href="https://github.com/Sztakler/vagabondoro-timer" target="_blank" class="project"
         @mouseover="updateMedia('vagabondoro')" @mouseleave="resetMedia">
-        <span class="project-year">2024</span>
-        <span class="project-title">Vagabondoro Timer</span>
+        <div class="project-header">
+          <span class="project-year">2024</span>
+          <span class="project-title">Vagabondoro Timer</span>
+        </div>
         <span class="project-category">Wed Design & Development</span>
       </a>
 
       <a href="https://github.com/Sztakler/driver-license-uwr" target="_blank" class="project"
         @mouseover="updateMedia('ale-jazda')" @mouseleave="resetMedia()">
+        <div class="project-header">
         <span class="project-year">2023</span>
         <span class="project-title">Ale Jazda!</span>
+        </div>
         <span class="project-category">Web Development</span>
       </a>
 
       <a href="https://github.com/Sztakler/opengl-objectviewer" target="_blank" class="project"
         @mouseover="updateMedia('ugabuga')" @mouseleave="resetMedia()">
+        <div class="project-header">
         <span class="project-year">2021</span>
         <span class="project-title">Objviewer</span>
+        </div>
         <span class="project-category">OpenGL & C++</span>
       </a>
     </div>
@@ -79,11 +85,17 @@ article {
   cursor: pointer;
 }
 
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
 .project-year {
   font-size: 1rem;
   color: #808080;
   align-self: flex-start;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
 }
 
 .project-title {
@@ -122,4 +134,43 @@ aside>video {
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 768px) {
+
+.projects {
+  width: 100%;
+}
+
+.project {
+  flex-direction: column;
+  gap: 0rem;
+}
+
+.project::after {
+  display: none;
+}
+
+.project-title {
+  font-size: 2rem;
+  display: block;
+  
+}
+
+.project-year {
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.project-category {
+  font-size: 0.8rem;
+  align-self: flex-start;
+  max-width: unset;
+}
+
+  aside {
+    display: none;
+  }
+}
+
 </style>
+

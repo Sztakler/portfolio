@@ -56,6 +56,8 @@
 body {
   margin: 0;
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
 canvas {
@@ -94,4 +96,10 @@ a {
 
 a:hover {
   opacity: 70%;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.8rem;
+  }
 }

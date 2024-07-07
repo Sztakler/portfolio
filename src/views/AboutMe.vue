@@ -48,7 +48,7 @@ header {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 img {
@@ -62,5 +62,16 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  article {
+    font-size: 1rem;
+  }
+
+  img {
+    height: 6rem;
+    width: 6rem;
+  }
 }
 </style>

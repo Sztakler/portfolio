@@ -11,7 +11,7 @@ let animationFrameId = 0;
 const updateTransform = (xAxis, yAxis) => {
   textStyle.value = {
     transform: `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`,
-    transition: 'transform 0.5s',
+    transition: 'transform 0.1s',
   };
 };
 
@@ -88,9 +88,6 @@ h1 {
   transition: transform 0.1s;
 }
 
-h1:hover {
-  transform: rotateX('30deg')
-}
 
 .subtitle {
   all: unset;
@@ -98,5 +95,13 @@ h1:hover {
   font-size: 1.25vw;
   line-height: 80%;
   letter-spacing: 2rem;
+}
+
+
+@media (max-width: 768px) {
+  .subtitle {
+    width: 100px;
+    letter-spacing: unset;
+  }
 }
 </style>
