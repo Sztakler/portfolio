@@ -179,8 +179,6 @@ aside>video {
     margin-top: 0.4rem;
   }
 
-
-
   aside {
     display: none;
   }

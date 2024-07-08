@@ -619,7 +619,7 @@ nav {
   width: 100vw;
   justify-content: flex-end;
   align-items: center;
-  color: #2f1400;
+  color: #050911;
   font-size: 1.25rem;
   padding: 1rem;
 }
@@ -638,7 +638,7 @@ nav>ul {
 li {
   all: unset;
   padding: 0.5rem;
-  background-color: #ffffff00;
+  background-color: #05091100;
   transition: opacity 0.1s ease-in-out;
   transition: background-color 0.1s ease-in-out;
 }
@@ -650,7 +650,7 @@ li>a {
 
 
 li:hover {
-  background-color: #08080888;
+  background-color: #05091188;
 }
 
 li:active {
@@ -720,7 +720,7 @@ footer {
   width: 100%;
   bottom: 0;
   left: 0;
-  color: #2f1400;
+  color: #050911;
   font-size: 1rem;
   padding: 1rem;
   gap: 0.5rem;
