@@ -25,6 +25,26 @@
 <body>
 	<div id="app"></div>
 	<script type="module" src="/src/main.ts"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll('*');
+    let overflowingElements = [];
+
+    elements.forEach(el => {
+        const elRect = el.getBoundingClientRect();
+        if (elRect.right > window.innerWidth || elRect.bottom > window.innerHeight) {
+            overflowingElements.push(el);
+        }
+    });
+
+    // Log the overflowing elements
+    if (overflowingElements.length > 0) {
+        console.log("Overflowing elements:", overflowingElements);
+    } else {
+        console.log("No overflowing elements detected.");
+    }
+});
+	</script>
 </body>
 
 </html>

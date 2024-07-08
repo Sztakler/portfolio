@@ -542,6 +542,7 @@ window.addEventListener("wheel", (event) => {
     </ul>
   </nav>
 
+
   <section id="home" class="bg-1">
     <Home />
   </section>
@@ -574,7 +575,7 @@ window.addEventListener("wheel", (event) => {
 }
 
 section {
-  height: 110vh;
+  height: 100vh;
   pointer-events: none;
 }
 
@@ -614,6 +615,7 @@ nav {
   position: fixed;
   z-index: 100;
   top: 0;
+  left: 0;
   width: 100vw;
   justify-content: flex-end;
   align-items: center;
@@ -715,8 +717,9 @@ footer {
   align-items: center;
   position: fixed;
   z-index: 100;
-  width: 100vw;
+  width: 100%;
   bottom: 0;
+  left: 0;
   color: #2f1400;
   font-size: 1rem;
   padding: 1rem;

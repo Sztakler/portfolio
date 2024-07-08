@@ -44,9 +44,9 @@ onUnmounted(() => {
 <template>
   <article>
     <header>
-      <h1 class="monumentextended-black" @mousemove="mouseMove" :style="textStyle">
+      <h1 class="monumentextended-black">
         <span>Krystian</span>
-        <span :class="'subtitle monumentextended-black'">{Designer_and_Developer}</span>
+        <span :class="'subtitle monumentextended-black'">[Designer_and_Developer]</span>
         <span>Jasionek</span>
       </h1>
     </header>
@@ -94,14 +94,24 @@ h1 {
   margin: 0;
   font-size: 1.25vw;
   line-height: 80%;
-  letter-spacing: 2rem;
+  letter-spacing: 1.5rem;
+  text-align: center;
+}
+
+span {
+  text-align: center;
 }
 
 
+@media (max-width: 1366px) {
+  .subtitle {
+    letter-spacing: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .subtitle {
-    width: 100px;
-    letter-spacing: unset;
+    letter-spacing: 0.5rem;
   }
 }
 </style>

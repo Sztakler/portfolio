@@ -30,7 +30,7 @@ export default {}
 @import '../style.css';
 
 article {
-  height: 100vh;
+  /* height: 100vh; */
   font-size: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ p {
 }
 
 header {
-  width: 100%;
+  /* width: 100vw; */
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
@@ -54,14 +54,28 @@ header {
 img {
   height: 10rem;
   width: 10rem;
-  border-radius: 100%;
   object-fit: cover;
+}
+
+h2 {
+  line-height: 1.0;
 }
 
 section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+@media (max-width: 1366px) {
+  article {
+    font-size: 1rem;
+  }
+
+  img {
+    height: 8rem;
+    width: 8rem;
+  }
 }
 
 @media (max-width: 768px) {
