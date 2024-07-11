@@ -514,6 +514,7 @@ window.addEventListener("wheel", (event) => {
   document.getElementById(nextLink + '-link')!.click();
 })
 
+
 </script>
 
 <template>

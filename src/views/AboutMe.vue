@@ -31,7 +31,7 @@ export default {}
 
 article {
   /* height: 100vh; */
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -49,6 +49,7 @@ header {
   justify-content: flex-start;
   align-items: flex-end;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 img {

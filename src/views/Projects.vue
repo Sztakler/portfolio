@@ -106,6 +106,8 @@ span {
   color: #808080;
   align-self: flex-start;
   margin-top: 1.2rem;
+  width: fit-content;
+  min-width: 32px;
 }
 
 .project-title {
