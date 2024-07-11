@@ -530,14 +530,26 @@ window.addEventListener("wheel", (event) => {
             href="#home">Home_</a>
         </li>
       </div>
-      <div class="right">
-        <li>
-          <a id="about-me-link" :class="{ active: activeLink === 'about-me' }" @click="setActiveLink('about-me')"
-            href="#about-me">About_Me_</a>
+
+      <ul class="center">
+        <li class="socials">
+          <a href="https://github.com/Sztakler">
+            Github_</a>
         </li>
+        ||
+        <li>
+          <a href="mailto:krystian.jasionek@protonmail.com">E-mail_</a>
+        </li>
+      </ul>
+
+      <div class="right">
         <li>
           <a id="projects-link" :class="{ active: activeLink === 'projects' }" @click="setActiveLink('projects')"
             href="#projects">Projects_</a>
+        </li>
+        <li>
+          <a id="about-me-link" :class="{ active: activeLink === 'about-me' }" @click="setActiveLink('about-me')"
+            href="#about-me">About_Me_</a>
         </li>
       </div>
     </ul>
@@ -556,16 +568,6 @@ window.addEventListener("wheel", (event) => {
   <section id="contact" class="bg-4">
     <Contact />
   </section>
-  <footer class="red-hat-display-semibold">
-    <li class="socials">
-      <a href="https://github.com/Sztakler">
-        Github_</a>
-    </li>
-    ||
-    <li>
-      <a href="mailto:krystian.jasionek@protonmail.com">E-mail_</a>
-    </li>
-  </footer>
 </template>
 
 <style scoped>
@@ -582,7 +584,8 @@ section {
 
 section:not(#home) {
   background-color: #f9f9fa;
-  padding-top: 4rem;
+  padding: 16px;
+  padding-top: 116px;
   transition: transform 0.45s cubic-bezier(0, 0, 0.21, 1);
   z-index: 100;
   pointer-events: auto;
@@ -622,7 +625,7 @@ nav {
   align-items: center;
   color: #050911;
   font-size: 1.25rem;
-  padding: 1rem;
+  padding: 40px;
 }
 
 
@@ -651,7 +654,7 @@ li>a {
 
 
 li:hover {
-  background-color: #05091188;
+  color: #0f1a31;
 }
 
 li:active {
@@ -710,6 +713,9 @@ a.active::after {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
@@ -717,14 +723,14 @@ footer {
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 100;
+  z-index: 10;
   width: 100%;
-  bottom: 0;
+  top: 0;
   left: 0;
   color: #050911;
-  font-size: 1rem;
-  padding: 1rem;
-  gap: 0.5rem;
+  font-size: 1.25rem;
+  padding: 40px;
+  gap: 4px;
 }
 
 @media (max-width: 768px) {
