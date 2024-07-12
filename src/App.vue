@@ -530,16 +530,7 @@ window.addEventListener("wheel", (event) => {
         </li>
       </div>
 
-      <ul class="center">
-        <li class="socials">
-          <a href="https://github.com/Sztakler">
-            Github_</a>
-        </li>
-        ||
-        <li>
-          <a href="mailto:krystian.jasionek@protonmail.com">E-mail_</a>
-        </li>
-      </ul>
+     
 
       <div class="right">
         <li>
@@ -567,6 +558,17 @@ window.addEventListener("wheel", (event) => {
   <section id="contact" class="bg-4">
     <Contact />
   </section>
+
+  <footer class="red-hat-display-semibold">
+    <li class="socials">
+      <a href="https://github.com/Sztakler">
+        Github_</a>
+    </li>
+    ||
+    <li>
+      <a href="mailto:krystian.jasionek@protonmail.com">E-mail_</a>
+    </li>
+  </footer>
 </template>
 
 <style scoped>
@@ -724,12 +726,12 @@ footer {
   position: fixed;
   z-index: 10;
   width: 100%;
-  top: 0;
+  bottom: 0;
   left: 0;
   color: #050911;
-  font-size: 1.25rem;
-  padding: 40px;
-  gap: 4px;
+  font-size: 1rem;
+  padding: 2rem;
+  gap: 0.5rem;
 }
 
 @media (max-width: 768px) {
