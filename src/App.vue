@@ -461,11 +461,10 @@ function init() {
   composer = new EffectComposer(renderer);
   const renderPass = new RenderPass(scene, camera);
   composer.addPass(renderPass);
-  // const glitchPass = new GlitchPass();
-  // composer.addPass(glitchPass);
+
   const outputPass = new OutputPass();
   composer.addPass(outputPass);
-  //
+  
 
   window.addEventListener('resize', onWindowResize);
 
