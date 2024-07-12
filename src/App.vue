@@ -517,7 +517,7 @@ window.addEventListener("wheel", (event) => {
 </script>
 
 <template>
-  <a class="hidden" id="home">Home_</a>
+  <a class="hidden" id="home">K_J_</a>
   <a class="hidden" id="about-me">About_me_</a>
   <a class="hidden" id="projects">Projects_</a>
   <a class="hidden" id="contact">Contact_</a>
@@ -526,7 +526,7 @@ window.addEventListener("wheel", (event) => {
       <div class="left">
         <li>
           <a id="home-link" :class="{ active: activeLink === 'home' }" @click="setActiveLink('home')"
-            href="#home">Home_</a>
+            href="#home">K_J_</a>
         </li>
       </div>
 
