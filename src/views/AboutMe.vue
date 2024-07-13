@@ -30,7 +30,6 @@ export default {}
 @import '../style.css';
 
 article {
-  /* height: 100vh; */
   font-size: 1rem;
   display: flex;
   flex-direction: column;

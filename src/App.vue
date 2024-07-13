@@ -460,7 +460,7 @@ function init() {
 
   composer = new EffectComposer(renderer);
   const renderPass = new RenderPass(scene, camera);
-  composer.addPass(renderPass);
+  composer.addPass(renderPass); 
 
   const outputPass = new OutputPass();
   composer.addPass(outputPass);
@@ -561,7 +561,7 @@ window.addEventListener("wheel", (event) => {
 
   <footer class="red-hat-display-semibold">
     <li class="socials">
-      <a href="https://github.com/Sztakler">
+      <a href="https://github.com/Sztakler" target="_blank">
         Github_</a>
     </li>
     ||
@@ -655,11 +655,11 @@ li>a {
 
 
 li:hover {
-  color: #0f1a31;
+  opacity: 80%;
 }
 
 li:active {
-  opacity: 70%;
+  opacity: 60%;
 }
 
 .active {
