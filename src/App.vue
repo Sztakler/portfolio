@@ -733,5 +733,9 @@ footer {
     padding: 1rem;
     padding-top: 5rem;
   }
+
+  footer {
+    padding: 1rem;
+  }
 }
 </style>

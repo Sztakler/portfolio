@@ -235,7 +235,7 @@ span {
   align-self: flex-start;
   margin-top: 1rem;
   width: fit-content;
-  min-width: 32px;
+  min-width: 36px;
 }
 
 .project-title {
@@ -360,11 +360,8 @@ aside>video {
 
   .all-projects-display .project {
   margin-bottom: 3rem;
-
 }
 }
-
-
 
 @media (max-width: 380px) {
 .project-title {

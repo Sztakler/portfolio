@@ -25,6 +25,11 @@ export default {}
       and functionality.
     </p>
     </div>
+    <div class="contact">
+      <h2>Want to talk?</h2>
+      <p>
+        You can find me on <a href="https://github.com/Sztakler" target="_blank">Github</a> or email me at <a href="mailto:krystian.jasionek@protonmail.com">krystian.jasionek@protonmail.com</a>.</p>
+    </div>
   </article>
 </template>
 
@@ -74,6 +79,12 @@ section {
   gap: 1rem;
 }
 
+.contact{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 @media (max-width: 1366px) {
   article {
     font-size: 1rem;
@@ -93,6 +104,14 @@ section {
   img {
     height: 6rem;
     width: 6rem;
+  }
+
+  h2 {
+  font-size: 1.5rem;
+  }
+
+  .description {
+    gap: 0.5rem;
   }
 }
 </style>
