@@ -72,7 +72,6 @@ function updateCurrentProject(key) {
     currentProject.value.visible = true;
     isProjectExpanded.value = true;
   }
-  console.log(isProjectExpanded.value)
 }
 
 function resetCurrentProject() {
@@ -94,13 +93,6 @@ function getProjectGithubLink(key) {
 }
 
 function shouldShowProject(index) {
-  console.log(
-    "aa", 
-    index, 
-  currentProject.value.id,
-  isProjectExpanded.value,
-  currentProject.value.id === index,
-  !isProjectExpanded.value || currentProject.value.id === index)
   return !isProjectExpanded.value || currentProject.value.id === index;
 }
 
