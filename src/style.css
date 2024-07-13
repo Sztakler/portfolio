@@ -83,7 +83,7 @@ h2 {
 
 article {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   color: #050911;
   font-family: "Red Hat Display", sans-serif;
   font-style: normal;

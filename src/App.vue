@@ -472,14 +472,13 @@ function onWindowResize() {
 
 }
 
-let shouldClear = true;
 let lastFrameTime = Date.now();
 const targetFPS = 30;
 function animate() {
   requestAnimationFrame(animate);
     const now = Date.now();
     const elapsed = now - lastFrameTime;
-    if (elapsed > 1000 / targetFPS) {
+    if (elapsed > 1000 / targetFPS && activeLink.value === 'home') {
       timer.update();
       material.uniforms.time.value = timer.getElapsed();
       lastFrameTime = now - (elapsed % (1000 / targetFPS));
@@ -503,17 +502,6 @@ window.addEventListener("wheel", (event) => {
   setActiveLink(nextLink);
   document.getElementById(nextLink + '-link')!.click();
 })
-
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
-
 </script>
 
 <template>
@@ -582,12 +570,12 @@ section {
 
 section:not(#home) {
   background-color: #f9f9fa;
-  padding: 16px;
+  padding: 3rem;
   padding-top: 116px;
   transition: transform 0.45s cubic-bezier(0, 0, 0.21, 1);
   z-index: 100;
   pointer-events: auto;
-
+  padding-top: 8rem;
 }
 
 a {
@@ -623,7 +611,7 @@ nav {
   align-items: center;
   color: #050911;
   font-size: 1.25rem;
-  padding: 40px;
+  padding: 3rem;
 }
 
 
@@ -634,12 +622,10 @@ nav>ul {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-
 }
 
 li {
   all: unset;
-  padding: 0.5rem;
   background-color: #05091100;
   transition: opacity 0.1s ease-in-out;
   transition: background-color 0.1s ease-in-out;
@@ -716,6 +702,11 @@ a.active::after {
   align-items: center;
 }
 
+.right {
+  display: flex;
+  gap: 1rem;
+}
+
 footer {
   display: flex;
   justify-content: center;
@@ -735,6 +726,12 @@ footer {
   nav {
     font-size: 1.2rem;
     width: 100vw;
+    padding: 1rem;
+  }
+
+  section:not(#home) {
+    padding: 1rem;
+    padding-top: 5rem;
   }
 }
 </style>

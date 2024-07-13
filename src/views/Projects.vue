@@ -114,12 +114,14 @@ function leave(el) {
 <template>
   <article>
     <div class="projects" :class="!isProjectExpanded ? 'all-projects-display' : 'single-project-display'">
-
-      <button v-for="(projectName, index) in projectNames" :key="index" class="project" >
+      <button v-for="(projectName, index) in projectNames" :key="index" class="project">
         <div class="project-content" v-if="shouldShowProject(index)" @click="toggleModal(projectName)">
           <div class="project-header">
-          <span class="project-year">{{ projects[projectName].year }}</span>
-          <span class="project-title">{{ projects[projectName].title }}</span>
+            <div>
+              <span class="project-year">{{ projects[projectName].year }}</span>
+              <span class="project-title">{{ projects[projectName].title }}</span>
+            </div>
+              <i class="fa-solid fa-chevron-down" :class="isProjectExpanded ? 'rotate' : ''"></i>
         </div>
         <span class="project-category">{{ projects[projectName].category }}</span>
         <Transition class="description" name="description" @enter="enter" @leave="leave">
@@ -151,7 +153,6 @@ article {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 2rem;
   height: 100%;
 }
 
@@ -167,6 +168,17 @@ button {
   all: unset;
 }
 
+.fa-chevron-down, .fa-chevron-up {
+  font-size: 1.5rem;
+  display: block;
+  min-width: 28px;
+  transition: transform 0.5s;
+}
+
+.rotate {
+  transform: rotateX(180deg);
+}
+
 .project {
   position: relative;
   display: flex;
@@ -176,6 +188,7 @@ button {
   gap: 0.5rem;
   width: fit-content;
   cursor: pointer;
+  width: 100%;
   transition: transform 0.5s ease, margin 0.5s ease;
 }
 
@@ -188,10 +201,22 @@ button {
   margin-bottom: 0;
 }
 
+.project-content {
+  width: 100%;
+
+}
+
 .project-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.project-header div {
+  display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 span {
@@ -208,9 +233,9 @@ span {
   font-size: 1rem;
   color: #808080;
   align-self: flex-start;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
   width: fit-content;
-  min-width: 48px;
+  min-width: 32px;
 }
 
 .project-title {
@@ -264,6 +289,11 @@ aside>video {
   background-color: #d7d8d8;
 }
 
+.description {
+  max-width: 60ch;
+  display: block;
+}
+
 .description-enter-active, .description-leave-active {
   transition: height 0.5s ease;
 }
@@ -303,8 +333,8 @@ aside>video {
 
   .project-year {
     font-size: 0.8rem;
-    margin-top: 0.4rem;
-    min-width: 32px;
+    margin-top: 0.25rem;
+    min-width: 28px;
   }
 
   .project-category {
@@ -317,12 +347,11 @@ aside>video {
 
   .description {
   font-size: 0.8rem;
-  max-width: 60ch;
   }
 
   .project-year {
     font-size: 0.8rem;
-    margin-top: 0.4rem;
+    margin-top: 0.25rem;
   }
 
   aside {

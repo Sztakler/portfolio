@@ -8,14 +8,15 @@ export default {}
       <img src="../assets/cv-morda.png" />
       <h2>Hi, Krystian here ;)</h2>
     </header>
-    <p>I profoundly believe that beautiful design and good design are the same thing. As a designer and developer I
+    <div class="description">
+      <p>I profoundly believe that beautiful design and good design are the same thing. As a designer and developer I
       strive to create the most visually pleasing and ergonomic interfaces possible.</p>
-    <p>For web development my preferred tools are <a href="https://vuejs.org/">Vue.js</a> and <a
-        href="https://sass-lang.com/">Sass</a>. Most of my recent projects have been built using these technologies.
+    <p>For web development my preferred tools are <a href="https://vuejs.org/" target="_blank">Vue.js</a> and <a
+        href="https://sass-lang.com/" target="_blank">Sass</a>. Most of my recent projects have been built using these technologies.
       I'm also experienced
       with
-      <a href="https://react.dev/">React</a>
-      and <a href="https://tailwindcss.com/">TailwindCSS</a>.
+      <a href="https://react.dev/" target="_blank">React</a>
+      and <a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a>.
     </p>
     <p>I'm the founder and developer of a small indie game studio called Kiki/Bouba. Our common belief is that games
       can
@@ -23,6 +24,7 @@ export default {}
       gameplay. We strive to elevate user experience through engaging, aesthetic designs and a strong focus on ergonomics
       and functionality.
     </p>
+    </div>
   </article>
 </template>
 
@@ -34,8 +36,13 @@ article {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
   line-height: 160%;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 p {
@@ -48,7 +55,6 @@ header {
   justify-content: flex-start;
   align-items: flex-end;
   gap: 1rem;
-  margin-bottom: 1rem;
 }
 
 img {
@@ -59,6 +65,7 @@ img {
 
 h2 {
   line-height: 1.0;
+  text-align: left;
 }
 
 section {
@@ -80,7 +87,7 @@ section {
 
 @media (max-width: 768px) {
   article {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   img {
