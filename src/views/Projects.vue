@@ -121,7 +121,7 @@ function leave(el) {
               <span class="project-year">{{ projects[projectName].year }}</span>
               <span class="project-title">{{ projects[projectName].title }}</span>
             </div>
-              <i class="fa-solid fa-chevron-down" :class="isProjectExpanded ? 'rotate' : ''"></i>
+              <span class="chevron" :class="isProjectExpanded ? 'rotate' : ''">></span>
         </div>
         <span class="project-category">{{ projects[projectName].category }}</span>
         <Transition class="description" name="description" @enter="enter" @leave="leave">
@@ -168,15 +168,24 @@ button {
   all: unset;
 }
 
-.fa-chevron-down, .fa-chevron-up {
+/* .fa-chevron-down, .fa-chevron-up {
   font-size: 1.5rem;
   display: block;
   min-width: 28px;
   transition: transform 0.5s;
+} */
+
+.chevron {
+  font-size: 2.5rem;
+  display: block;
+  transition: transform 0.5s;
+  transform: rotate(90deg);
+  align-self: flex-start;
+  
 }
 
 .rotate {
-  transform: rotateX(180deg);
+  transform: rotate(-90deg);
 }
 
 .project {

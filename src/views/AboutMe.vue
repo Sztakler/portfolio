@@ -4,8 +4,10 @@ export default {}
 
 <template>
   <article>
-    <header>
-      <img src="../assets/cv-morda.png" />
+    <img src="../assets/cv-morda.png" />
+    <div class="text-content">
+      <header>
+      <img class="header-img" src="../assets/cv-morda.png" />
       <h2>Hi, Krystian here ;)</h2>
     </header>
     <div class="description">
@@ -30,6 +32,7 @@ export default {}
       <p>
         You can find me on <a href="https://github.com/Sztakler" target="_blank">Github</a> or email me at <a href="mailto:krystian.jasionek@protonmail.com">krystian.jasionek@protonmail.com</a>.</p>
     </div>
+    </div>
   </article>
 </template>
 
@@ -39,9 +42,17 @@ export default {}
 article {
   font-size: 1rem;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 4rem !important;
+  line-height: 160%;
+}
+
+.text-content {
+  display: flex;
   flex-direction: column;
   gap: 2rem;
-  line-height: 160%;
 }
 
 .description {
@@ -55,7 +66,6 @@ p {
 }
 
 header {
-  /* width: 100vw; */
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
@@ -63,9 +73,16 @@ header {
 }
 
 img {
+  height: auto;
+  width: auto;
+  object-fit: cover;
+}
+
+.header-img {
   height: 10rem;
   width: 10rem;
   object-fit: cover;
+  display: none;
 }
 
 h2 {
@@ -91,8 +108,13 @@ section {
   }
 
   img {
+    display: none;
+  }
+
+  .header-img {
     height: 8rem;
     width: 8rem;
+    display: block;
   }
 }
 
@@ -101,7 +123,7 @@ section {
     font-size: 0.8rem;
   }
 
-  img {
+  .header-img {
     height: 6rem;
     width: 6rem;
   }

@@ -6,8 +6,6 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 // import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
-import { useRoute } from 'vue-router';
-
 import { ref } from 'vue';
 
 import Home from './views/Home.vue';
@@ -24,7 +22,6 @@ let mesh: THREE.Mesh;
 let material: THREE.ShaderMaterial;
 let geometry: THREE.BoxGeometry;
 
-const route = useRoute();
 const activeLink = ref('home');
 const navLinks = ref(["home", "projects", "about-me"]);
 const currentNavLinkIndex = ref(0);
@@ -469,7 +466,6 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
 
   renderer.setSize(window.innerWidth, window.innerHeight);
-
 }
 
 let lastFrameTime = Date.now();
@@ -509,7 +505,7 @@ window.addEventListener("wheel", (event) => {
   <a class="hidden" id="about-me">About_me_</a>
   <a class="hidden" id="projects">Projects_</a>
   <a class="hidden" id="contact">Contact_</a>
-  <nav class="red-hat-display-semibold">
+  <nav id='nav' class="red-hat-display-semibold">
     <ul>
       <div class="left">
         <li>
@@ -569,7 +565,7 @@ section {
 }
 
 section:not(#home) {
-  background-color: #f9f9fa;
+  background-color: #f7f9fd;
   padding: 3rem;
   padding-top: 116px;
   transition: transform 0.45s cubic-bezier(0, 0, 0.21, 1);
@@ -609,7 +605,8 @@ nav {
   width: 100vw;
   justify-content: flex-end;
   align-items: center;
-  color: #050911;
+  mix-blend-mode: difference;
+  color: #f7f9fd;
   font-size: 1.25rem;
   padding: 3rem;
 }
@@ -626,9 +623,7 @@ nav>ul {
 
 li {
   all: unset;
-  background-color: #05091100;
   transition: opacity 0.1s ease-in-out;
-  transition: background-color 0.1s ease-in-out;
 }
 
 li>a {
@@ -657,7 +652,7 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #050911;
+  background-color: #f7f9fd;
   transition: width 0.5s ease-in-out;
 }
 
@@ -716,7 +711,8 @@ footer {
   width: 100%;
   bottom: 0;
   left: 0;
-  color: #050911;
+  mix-blend-mode: difference;
+  color: #f7f9fd;
   font-size: 1rem;
   padding: 2rem;
   gap: 0.5rem;
