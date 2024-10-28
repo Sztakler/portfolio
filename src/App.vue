@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import { Timer } from 'three/addons/misc/Timer.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-// import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 import { ref } from 'vue';
@@ -23,9 +22,6 @@ let material: THREE.ShaderMaterial;
 let geometry: THREE.BoxGeometry;
 
 const activeLink = ref('home');
-const navLinks = ref(["home", "projects", "about-me"]);
-const currentNavLinkIndex = ref(0);
-
 const timer = new Timer();
 
 function vertexShader() {
@@ -486,18 +482,6 @@ function setActiveLink(link: string) {
   activeLink.value = link;
 }
 
-// window.addEventListener("wheel", (event) => {
-//   let nextLink = 'home';
-
-//   if (event.deltaY < 0)
-//     currentNavLinkIndex.value = (currentNavLinkIndex.value - 1 + navLinks.value.length) % navLinks.value.length;
-//   else if (event.deltaY > 0)
-//     currentNavLinkIndex.value = (currentNavLinkIndex.value + 1) % navLinks.value.length;
-
-//   nextLink = navLinks.value[currentNavLinkIndex.value]
-//   setActiveLink(nextLink);
-//   document.getElementById(nextLink + '-link')!.click();
-// })
 </script>
 
 <template>
