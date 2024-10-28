@@ -450,11 +450,11 @@ function init() {
 
   composer = new EffectComposer(renderer);
   const renderPass = new RenderPass(scene, camera);
-  composer.addPass(renderPass); 
+  composer.addPass(renderPass);
 
   const outputPass = new OutputPass();
   composer.addPass(outputPass);
-  
+
 
   window.addEventListener('resize', onWindowResize);
 
@@ -472,32 +472,32 @@ let lastFrameTime = Date.now();
 const targetFPS = 30;
 function animate() {
   requestAnimationFrame(animate);
-    const now = Date.now();
-    const elapsed = now - lastFrameTime;
-    if (elapsed > 1000 / targetFPS && activeLink.value === 'home') {
-      timer.update();
-      material.uniforms.time.value = timer.getElapsed();
-      lastFrameTime = now - (elapsed % (1000 / targetFPS));
-      composer.render();
-    }
+  const now = Date.now();
+  const elapsed = now - lastFrameTime;
+  if (elapsed > 1000 / targetFPS && activeLink.value === 'home') {
+    timer.update();
+    material.uniforms.time.value = timer.getElapsed();
+    lastFrameTime = now - (elapsed % (1000 / targetFPS));
+    composer.render();
+  }
 }
 
 function setActiveLink(link: string) {
   activeLink.value = link;
 }
 
-window.addEventListener("wheel", (event) => {
-  let nextLink = 'home';
+// window.addEventListener("wheel", (event) => {
+//   let nextLink = 'home';
 
-  if (event.deltaY < 0)
-    currentNavLinkIndex.value = (currentNavLinkIndex.value - 1 + navLinks.value.length) % navLinks.value.length;
-  else if (event.deltaY > 0)
-    currentNavLinkIndex.value = (currentNavLinkIndex.value + 1) % navLinks.value.length;
+//   if (event.deltaY < 0)
+//     currentNavLinkIndex.value = (currentNavLinkIndex.value - 1 + navLinks.value.length) % navLinks.value.length;
+//   else if (event.deltaY > 0)
+//     currentNavLinkIndex.value = (currentNavLinkIndex.value + 1) % navLinks.value.length;
 
-  nextLink = navLinks.value[currentNavLinkIndex.value]
-  setActiveLink(nextLink);
-  document.getElementById(nextLink + '-link')!.click();
-})
+//   nextLink = navLinks.value[currentNavLinkIndex.value]
+//   setActiveLink(nextLink);
+//   document.getElementById(nextLink + '-link')!.click();
+// })
 </script>
 
 <template>
@@ -572,6 +572,7 @@ section:not(#home) {
   z-index: 100;
   pointer-events: auto;
   padding-top: 8rem;
+  padding-bottom: 5rem;
 }
 
 a {
@@ -728,6 +729,7 @@ footer {
   section:not(#home) {
     padding: 1rem;
     padding-top: 5rem;
+    padding-bottom: 4rem;
   }
 
   footer {

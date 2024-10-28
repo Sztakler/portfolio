@@ -4,14 +4,31 @@ import { ref } from 'vue';
 const isProjectExpanded = ref(false);
 const mediaPrefix = "./assets/videos/";
 const currentMedia = ref("vagabondoro.jpg");
-const projectNames = ['ale-jazda', 'vagabondoro','objviewer'];
+const projectNames = ['lampa', 'ale-jazda', 'vagabondoro', 'objviewer'];
 const projects = ref({
-  "ale-jazda": {
+  "lampa": {
     id: 0,
-    media: "alejazda.mp4",
+    media: "lampa.webm",
+    github: "https://github.com/Sztakler/Lampa",
+    year: '2024',
+    category: 'Web Design & Development',
+    tags: ['NuxtJS', "TailwindCSS", 'Figma'],
+    title: 'Lampa',
+    description: [
+      `This summer's heat inspired my friends and me to get creative with ways to lift our spirits during those sweltering days. We started coming up with puns and wordplay to describe the weather, most notably calling high temperatures "lampa" (eng. "lamp"). This sparked the idea for my summer project: a mobile and desktop weather app called "Czy jest dzisiaj lampa?" (eng. "Is it a lamp today?"), designed to describe current conditions with humor.`,
+      `I opted for a minimalistic, almost brutalist design in monochrome, using only black and white to eliminate distractions and make the weather details instantly accessible.`,
+      `The application was built with NuxtJS and styled using TailwindCSS for fast, scalable development. Initially, I used the OpenWeather API, but I ran into a frustrating bug that made the sunrise and sunset data unreliable. To work around this, I integrated the Sunrise-Sunset API, achieving accurate results.`,
+      `The app is still a work in progress. While it functions fully as a weather app, it currently lacks the humorous descriptions I have in mind. If you have any ideas for weather puns, don’t hesitate to send me an email—I’d love to hear them!`
+    ],
+    visible: false,
+  },
+  "ale-jazda": {
+    id: 1,
+    media: "alejazda.webm",
     github: "https://github.com/Sztakler/driver-license-uwr",
     year: '2023',
     category: 'Web Development',
+    tags: ['React', 'ExpressJS', 'TailwindCSS'],
     title: 'Ale Jazda!',
     description: [
       `A friend and I once discussed apps for preparing for the driver's license exam. Most of them seemed outdated, offered little, and worst of all, required payment. We both agreed that it didn't have to be this way. Seeking a solution, we enlisted the help of a friend studying Graphic Design. Together, we set out to create something fresh, modern, and completely free for everyone.`,
@@ -20,27 +37,29 @@ const projects = ref({
     visible: false,
   },
   "vagabondoro": {
-    id: 1,
+    id: 2,
     media: "vagabondoro.webm",
     github: "https://github.com/Sztakler/vagabondoro-timer",
     year: '2024',
     category: 'Web Design & Development',
-    title: 'Vagabondoro Timer',
+    tags: ['VueJS', 'CSS', 'Figma'],
+    title: 'Vagabondoro',
     description: [
-`Seeking a solution for managing my work time and tasks, I developed an application to refine my skills in TypeScript and Vue. Inspired by the minimalist style of a Vagabond manga panel and the serene Kanagawa theme of Neovim, the app aims to minimize distractions and boost productivity.
+      `Seeking a solution for managing my work time and tasks, I developed an application to refine my skills in TypeScript and Vue. Inspired by the minimalist style of a Vagabond manga panel and the serene Kanagawa theme of Neovim, the app aims to minimize distractions and boost productivity.
 `,
-`Key features include effortless task list editing, task prioritization, and a dedicated timer that tracks "pomos" (pomodoro sessions). The timer seamlessly transitions between work sessions and breaks, prompting a long break after four pomos. Users can estimate task completion times and manage tasks with ease, including hiding completed tasks for enhanced focus.
+      `Key features include effortless task list editing, task prioritization, and a dedicated timer that tracks "pomos" (pomodoro sessions). The timer seamlessly transitions between work sessions and breaks, prompting a long break after four pomos. Users can estimate task completion times and manage tasks with ease, including hiding completed tasks for enhanced focus.
 `,
-`Designed with mobile usability in mind, the app ensures a responsive experience across devices.`,
-  ],
+      `Designed with mobile usability in mind, the app ensures a responsive experience across devices.`,
+    ],
     visible: false,
   },
   "objviewer": {
-    id: 2,
-    media: "objviewer.mp4",
+    id: 3,
+    media: "objviewer.webm",
     github: "https://github.com/Sztakler/opengl-objectviewer",
     year: '2021',
     category: 'OpenGL & C++',
+    tags: ['C++', 'OpenGL', 'GLSL'],
     title: 'Objviewer',
     description: [
       `During my time at the University of Wroclaw studying computer science, I enrolled in a computer graphics course that significantly expanded my technical skill set. I gained foundational knowledge in GPU pipelines and OpenGL, as well as the principles of computer representation of models, textures, and lighting. Additionally, I delved into the mathematics behind projections, rotations, cameras, and reflections.`,
@@ -49,7 +68,7 @@ const projects = ref({
     visible: false,
   },
   "default": {
-    id: 3,
+    id: 4,
     media: "",
     github: "",
     year: '',
@@ -121,15 +140,23 @@ function leave(el) {
               <span class="project-year">{{ projects[projectName].year }}</span>
               <span class="project-title">{{ projects[projectName].title }}</span>
             </div>
-              <span class="chevron" :class="isProjectExpanded ? 'rotate' : ''">></span>
-        </div>
-        <span class="project-category">{{ projects[projectName].category }}</span>
-        <Transition class="description" name="description" @enter="enter" @leave="leave">
-          <span class="collapsible-span" v-if="projects[projectName].visible">
-            <p v-for="(paragraph, index) in projects[projectName].description" :key="index">{{ paragraph }}</p>
-            <a class='github-link' :href="projects[projectName].github" target="_blank">> See on Github</a>
-          </span>
-      </Transition>
+            <span class="chevron" :class="isProjectExpanded ? 'rotate' : ''">></span>
+          </div>
+          <span class="project-category">{{ projects[projectName].category }}</span>
+          <Transition class="description" name="description" @enter="enter" @leave="leave">
+            <span class="collapsible-span" v-if="projects[projectName].visible">
+              <p v-for="(paragraph, index) in projects[projectName].description" :key="index">{{ paragraph }}</p>
+              <div class='tags-container'>
+                <div class='tags-title'>Tech stack</div>
+                <div class='tags'>
+                  <div class="tag-name" v-for="(tag, index) in projects[projectName].tags" :key="index">
+                    {{ tag }}
+                  </div>
+                </div>
+              </div>
+              <a class='github-link' :href="projects[projectName].github" target="_blank">> See on Github</a>
+            </span>
+          </Transition>
         </div>
       </button>
     </div>
@@ -162,18 +189,17 @@ article {
   flex-direction: column;
   flex: 4;
   transition: all 0.5s ease;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.projects::-webkit-scrollbar {
+  display: none;
 }
 
 button {
   all: unset;
 }
-
-/* .fa-chevron-down, .fa-chevron-up {
-  font-size: 1.5rem;
-  display: block;
-  min-width: 28px;
-  transition: transform 0.5s;
-} */
 
 .chevron {
   font-size: 2.5rem;
@@ -181,7 +207,7 @@ button {
   transition: transform 0.5s;
   transform: rotate(90deg);
   align-self: flex-start;
-  
+
 }
 
 .rotate {
@@ -202,7 +228,7 @@ button {
 }
 
 .all-projects-display .project {
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 
 }
 
@@ -303,11 +329,13 @@ aside>video {
   display: block;
 }
 
-.description-enter-active, .description-leave-active {
+.description-enter-active,
+.description-leave-active {
   transition: height 0.5s ease;
 }
 
-.description-enter-from, .description-leave-to {
+.description-enter-from,
+.description-leave-to {
   height: 0;
   overflow: hidden;
 }
@@ -327,6 +355,20 @@ aside>video {
 
 .github-link:hover {
   opacity: 80%;
+}
+
+.tags {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tags-title {
+  font-weight: 600;
+}
+
+.tag-name {
+  font-weight: 200;
 }
 
 @media (max-width: 1900px) {
@@ -355,7 +397,7 @@ aside>video {
 @media (max-width: 768px) {
 
   .description {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
   }
 
   .project-year {
@@ -368,14 +410,14 @@ aside>video {
   }
 
   .all-projects-display .project {
-  margin-bottom: 3rem;
-}
+    margin-bottom: 1.5rem;
+  }
 }
 
 @media (max-width: 380px) {
-.project-title {
-  font-size: 1.5rem;
-}
+  .project-title {
+    font-size: 1.5rem;
+  }
 }
 </style>
 
