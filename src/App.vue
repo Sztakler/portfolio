@@ -395,19 +395,184 @@ float snoise(vec3 v)
   return 2.2 * n_xyz;
 }
 
-void main() {
-  vec3 uvTimeOffset = vUv.xyz + time * 0.13;
-  vec2 cel = cellular(uvTimeOffset);
 
-  vec4 invColor = vec4(0.86, 0.94, 1.0, 1.0);
-  float sinTimeAdjusted = 0.75 + (sin(time) + 1.0) / 8.0;
-  vec4 baseColor = invColor * vec4(cel, sinTimeAdjusted, 1.0);
+// =============
 
-  float pn = pnoise(vUv + time * 0.1, vec3(10.));
-  vec4 noiseColor = vec4(pn, pn, pn, 1.0);
-
-  gl_FragColor = baseColor + noiseColor;
+float colormap_red(float x) {
+    if (x < 0.0) {
+        return 54.0 / 255.0;
+    } else if (x < 20049.0 / 82979.0) {
+        return (829.79 * x + 54.51) / 255.0;
+    } else {
+        return 1.0;
+    }
 }
+
+float colormap_green(float x) {
+    if (x < 20049.0 / 82979.0) {
+        return 0.0;
+    } else if (x < 327013.0 / 810990.0) {
+        return (8546482679670.0 / 10875673217.0 * x - 2064961390770.0 / 10875673217.0) / 255.0;
+    } else if (x <= 1.0) {
+        return (103806720.0 / 483977.0 * x + 19607415.0 / 483977.0) / 255.0;
+    } else {
+        return 1.0;
+    }
+}
+
+float colormap_blue(float x) {
+    if (x < 0.0) {
+        return 54.0 / 255.0;
+    } else if (x < 7249.0 / 82979.0) {
+        return (829.79 * x + 54.51) / 255.0;
+    } else if (x < 20049.0 / 82979.0) {
+        return 127.0 / 255.0;
+    } else if (x < 327013.0 / 810990.0) {
+        return (792.02249341361393720147485376583 * x - 64.364790735602331034989206222672) / 255.0;
+    } else {
+        return 1.0;
+    }
+}
+//
+//vec4 colormap(float x) {
+    //return vec4(colormap_red(x), colormap_green(x), colormap_blue(x), 1.0);
+//}
+float easeInOut(float t) {
+    return t * t * (3.0 - 2.0 * t); // smoothstep-like
+}
+
+vec4 colormap(float x) {
+    x = clamp(x, 0.0, 1.0);
+    float r = 0.29 * x;
+    float g = 0.62 * x + 0.1;
+    float b = 0.95 * x + 0.2;
+    return vec4(r, g, b, 1.0);
+}
+
+// https://iquilezles.org/articles/warp
+/*float noise( in vec2 x )
+{
+    vec2 p = floor(x);
+    vec2 f = fract(x);
+    f = f*f*(3.0-2.0*f);
+    float a = textureLod(iChannel0,(p+vec2(0.5,0.5))/256.0,0.0).x;
+	float b = textureLod(iChannel0,(p+vec2(1.5,0.5))/256.0,0.0).x;
+	float c = textureLod(iChannel0,(p+vec2(0.5,1.5))/256.0,0.0).x;
+	float d = textureLod(iChannel0,(p+vec2(1.5,1.5))/256.0,0.0).x;
+    return mix(mix( a, b,f.x), mix( c, d,f.x),f.y);
+}*/
+
+
+float rand(vec2 n) { 
+    return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+}
+
+float noise(vec2 p){
+    vec2 ip = floor(p);
+    vec2 u = fract(p);
+    u = u*u*(3.0-2.0*u);
+
+    float res = mix(
+        mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),
+        mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);
+    return res*res;
+}
+
+const mat2 mtx = mat2( 0.80,  0.60, -0.60,  0.80 );
+
+float fbm( vec2 p )
+{
+    float f = 0.0;
+
+    f += 0.500000*noise( p + time / 5.0  ); p = mtx*p*2.02;
+    f += 0.031250*noise( p ); p = mtx*p*2.01;
+    f += 0.250000*noise( p ); p = mtx*p*2.03;
+    f += 0.125000*noise( p ); p = mtx*p*2.01;
+    f += 0.062500*noise( p ); p = mtx*p*2.04;
+    f += 0.015625*noise( p + sin(time) );
+
+    return f/0.96875;
+}
+
+float pattern( vec2 p )
+{
+	return fbm( p + fbm( p + fbm( p ) ) );
+}
+
+
+
+void main() {
+  vec2 uv = vUv.xy;
+	float shade = pattern(uv);
+  //gl_FragColor = vec4(colormap(shade).rgb, 1.0);
+
+
+  float gray = (shade + 1.0) * 0.5; // z -1..1 do 0..1
+   // Bayer 4x4 dithering matrix (0–15), znormalizowane do 0..1
+   int x = int(mod(gl_FragCoord.x, 4.0));
+   int y = int(mod(gl_FragCoord.y, 4.0));
+ 
+   float thresholdMatrix[16];
+   thresholdMatrix[0] = 0.0 / 16.0;
+   thresholdMatrix[1] = 8.0 / 16.0;
+   thresholdMatrix[2] = 2.0 / 16.0;
+   thresholdMatrix[3] = 10.0 / 16.0;
+   thresholdMatrix[4] = 12.0 / 16.0;
+   thresholdMatrix[5] = 4.0 / 16.0;
+   thresholdMatrix[6] = 14.0 / 16.0;
+   thresholdMatrix[7] = 6.0 / 16.0;
+   thresholdMatrix[8] = 3.0 / 16.0;
+   thresholdMatrix[9] = 11.0 / 16.0;
+   thresholdMatrix[10] = 1.0 / 16.0;
+   thresholdMatrix[11] = 9.0 / 16.0;
+   thresholdMatrix[12] = 15.0 / 16.0;
+   thresholdMatrix[13] = 7.0 / 16.0;
+   thresholdMatrix[14] = 13.0 / 16.0;
+   thresholdMatrix[15] = 5.0 / 16.0;
+ 
+   int idx = y * 4 + x;
+   float threshold = thresholdMatrix[idx];
+ 
+   float dithered = gray < threshold ? 0.0 : 1.0;
+
+  //gl_FragColor = vec4(colormap(shade).rgb , 1.0);
+  gl_FragColor = vec4(colormap(shade).rgb , 1.0);
+}
+
+// void main() {
+  // float pn = pnoise(vUv + time * 0.1, vec3(10.));
+  // vec4 noiseColor = vec4(pn, pn, pn, 1.0);
+// 
+  // float gray = (pn + 1.0) * 0.5; // z -1..1 do 0..1
+// 
+  // // Bayer 4x4 dithering matrix (0–15), znormalizowane do 0..1
+  // int x = int(mod(gl_FragCoord.x, 4.0));
+  // int y = int(mod(gl_FragCoord.y, 4.0));
+// 
+  // float thresholdMatrix[16];
+  // thresholdMatrix[0] = 0.0 / 16.0;
+  // thresholdMatrix[1] = 8.0 / 16.0;
+  // thresholdMatrix[2] = 2.0 / 16.0;
+  // thresholdMatrix[3] = 10.0 / 16.0;
+  // thresholdMatrix[4] = 12.0 / 16.0;
+  // thresholdMatrix[5] = 4.0 / 16.0;
+  // thresholdMatrix[6] = 14.0 / 16.0;
+  // thresholdMatrix[7] = 6.0 / 16.0;
+  // thresholdMatrix[8] = 3.0 / 16.0;
+  // thresholdMatrix[9] = 11.0 / 16.0;
+  // thresholdMatrix[10] = 1.0 / 16.0;
+  // thresholdMatrix[11] = 9.0 / 16.0;
+  // thresholdMatrix[12] = 15.0 / 16.0;
+  // thresholdMatrix[13] = 7.0 / 16.0;
+  // thresholdMatrix[14] = 13.0 / 16.0;
+  // thresholdMatrix[15] = 5.0 / 16.0;
+// 
+  // int idx = y * 4 + x;
+  // float threshold = thresholdMatrix[idx];
+// 
+  // float dithered = gray < threshold ? 0.0 : 1.0;
+  // gl_FragColor = (noiseColor) * dithered * vec4(1.0, 0.0, 1.0);
+// }
 `
 }
 
@@ -590,8 +755,8 @@ nav {
   width: 100vw;
   justify-content: flex-end;
   align-items: center;
-  mix-blend-mode: difference;
-  color: #f7f9fd;
+  mix-blend-mode: none;
+  color: #808080;
   font-size: 1.25rem;
   padding: 3rem;
 }
@@ -614,6 +779,7 @@ li {
 li>a {
   all: unset;
   cursor: pointer;
+  color: #080808;
 }
 
 
@@ -637,7 +803,7 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #f7f9fd;
+  background-color: #080808;
   transition: width 0.5s ease-in-out;
 }
 
@@ -696,8 +862,8 @@ footer {
   width: 100%;
   bottom: 0;
   left: 0;
-  mix-blend-mode: difference;
-  color: #f7f9fd;
+  mix-blend-mode: none;
+  color: #080808;
   font-size: 1rem;
   padding: 2rem;
   gap: 0.5rem;

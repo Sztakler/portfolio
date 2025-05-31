@@ -4,10 +4,24 @@ import { ref } from 'vue';
 const isProjectExpanded = ref(false);
 const mediaPrefix = "./assets/videos/";
 const currentMedia = ref("vagabondoro.jpg");
-const projectNames = ['lampa', 'ale-jazda', 'vagabondoro', 'objviewer'];
+const projectNames = ['clone', 'lampa', 'ale-jazda', 'chujodoro', 'objviewer', ];
 const projects = ref({
-  "lampa": {
+  "clone": {
     id: 0,
+    media: "alejazda.webm",
+    github: "https://github.com/Sztakler/clone",
+    year: '2025',
+    category: 'Web Design & Development',
+    tags: ['React', 'FastAPI'],
+    title: 'Robot Control',
+    description: [
+      `RobotControl is a full-stack application designed for real-time monitoring and control of a simulated robot. Originally developed as a technical recruitment task for Clone Robotics, it demonstrates the ability to build clean, modular, and testable full-stack applications. The backend is built with FastAPI following a modular architecture and communicates via RESTful HTTP. It includes comprehensive integration tests using pytest and httpx, allowing API validation without the need to run a live server. The application is containerized with Docker for straightforward deployment and scalability.`,
+      `The frontend is developed with React and tested using Jest to ensure UI stability and correctness. While the system has WebSocket support prepared for real-time data streaming, it currently relies solely on HTTP to maintain simplicity and robustness. The overall design prioritizes clean separation of concerns, extensibility, and ease of adaptation to real-world robotic systems.`,
+    ],
+    visible: false,
+  },
+  "lampa": {
+    ld: 4,
     media: "lampa.webm",
     github: "https://github.com/Sztakler/Lampa",
     year: '2024',
@@ -36,14 +50,14 @@ const projects = ref({
     ],
     visible: false,
   },
-  "vagabondoro": {
+  "chujodoro": {
     id: 2,
     media: "vagabondoro.webm",
     github: "https://github.com/Sztakler/vagabondoro-timer",
     year: '2024',
     category: 'Web Design & Development',
     tags: ['VueJS', 'CSS', 'Figma'],
-    title: 'Vagabondoro',
+    title: 'chujodoro',
     description: [
       `Seeking a solution for managing my work time and tasks, I developed an application to refine my skills in TypeScript and Vue. Inspired by the minimalist style of a Vagabond manga panel and the serene Kanagawa theme of Neovim, the app aims to minimize distractions and boost productivity.
 `,
@@ -58,7 +72,7 @@ const projects = ref({
     media: "objviewer.webm",
     github: "https://github.com/Sztakler/opengl-objectviewer",
     year: '2021',
-    category: 'OpenGL & C++',
+    category: 'Computer Graphics',
     tags: ['C++', 'OpenGL', 'GLSL'],
     title: 'Objviewer',
     description: [
@@ -68,7 +82,7 @@ const projects = ref({
     visible: false,
   },
   "default": {
-    id: 4,
+    id: 5,
     media: "",
     github: "",
     year: '',
@@ -190,11 +204,11 @@ article {
   flex: 4;
   transition: all 0.5s ease;
   overflow-y: scroll;
-  scrollbar-width: none;
+  scrollbar-width: "4px";
 }
 
 .projects::-webkit-scrollbar {
-  display: none;
+background: transparent;
 }
 
 button {

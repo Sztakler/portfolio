@@ -46,7 +46,7 @@ onUnmounted(() => {
     <header>
       <h1 class="monumentextended-black">
         <span>Krystian</span>
-        <span :class="'subtitle monumentextended-black'">[Designer_and_Developer]</span>
+        <span :class="'subtitle monumentextended-black'">[Developer_and_Designer]</span>
         <span>Jasionek</span>
       </h1>
     </header>
@@ -82,7 +82,6 @@ h1 {
   font-size: 12vw;
   color: #4bb4ff;
   mix-blend-mode: difference;
-  filter: invert();
   line-height: 100%;
   transform-style: preserve-3d;
   transition: transform 0.1s;
