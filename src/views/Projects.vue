@@ -1,14 +1,14 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const isProjectExpanded = ref(false);
 const mediaPrefix = "./assets/videos/";
 const currentMedia = ref("vagabondoro.jpg");
-const projectNames = ['clone', 'lampa', 'ale-jazda', 'chujodoro', 'objviewer', ];
+const projectNames = ['clone', 'curves', 'ale-jazda', 'objviewer', 'lampa', 'vagabondoro', ];
 const projects = ref({
   "clone": {
     id: 0,
-    media: "alejazda.webm",
+    media: "clone.webm",
     github: "https://github.com/Sztakler/clone",
     year: '2025',
     category: 'Web Design & Development',
@@ -20,24 +20,22 @@ const projects = ref({
     ],
     visible: false,
   },
-  "lampa": {
-    ld: 4,
-    media: "lampa.webm",
-    github: "https://github.com/Sztakler/Lampa",
-    year: '2024',
-    category: 'Web Design & Development',
-    tags: ['NuxtJS', "TailwindCSS", 'Figma'],
-    title: 'Lampa',
+    "curves": {
+    id: 1,
+    media: "curves.webm",
+    github: "https://github.com/Sztakler/curves",
+    year: '2023',
+    category: 'Computer Graphics, Algorithms & Mathmatics',
+    tags: ['Python', 'Pygame', 'Pygame GUI'],
+    title: 'Curves',
     description: [
-      `This summer's heat inspired my friends and me to get creative with ways to lift our spirits during those sweltering days. We started coming up with puns and wordplay to describe the weather, most notably calling high temperatures "lampa" (eng. "lamp"). This sparked the idea for my summer project: a mobile and desktop weather app called "Czy jest dzisiaj lampa?" (eng. "Is it a lamp today?"), designed to describe current conditions with humor.`,
-      `I opted for a minimalistic, almost brutalist design in monochrome, using only black and white to eliminate distractions and make the weather details instantly accessible.`,
-      `The application was built with NuxtJS and styled using TailwindCSS for fast, scalable development. Initially, I used the OpenWeather API, but I ran into a frustrating bug that made the sunrise and sunset data unreliable. To work around this, I integrated the Sunrise-Sunset API, achieving accurate results.`,
-      `The app is still a work in progress. While it functions fully as a weather app, it currently lacks the humorous descriptions I have in mind. If you have any ideas for weather puns, don’t hesitate to send me an email—I’d love to hear them!`
+      `Curves is an interactive graphical application built in Python using Pygame, designed to let users freely manipulate, transform, and animate curves on a digital canvas. It offers a broad set of intuitive tools for working with curves — including rotation, translation, degree modification, splitting, joining, and animation — as well as the ability to display convex hulls. The interface supports both keyboard and mouse input for precise control, and includes full support for loading images, saving/loading canvases, and exporting creations.`,
+      `The app supports multiple types of curves: Lagrange, Bézier, Rational Bézier, B-spline, and Spline curves, giving users a flexible playground for both artistic expression and mathematical exploration. What makes Curves really special to me is that all the underlying mathematical structures and algorithms were implemented entirely from scratch — no external geometry libraries involved. Everything is based on what I learned during the Curves and Surfaces in Computer Graphics course at the University of Wrocław. I’m genuinely proud of this project because it combines two things I absolutely love: mathematics and visual creativity. I'm deeply fascinated by the intersection of hard science and visual arts — and building this tool was a full-on passion project that let me dive headfirst into that space.`,
     ],
     visible: false,
   },
   "ale-jazda": {
-    id: 1,
+    id: 2,
     media: "alejazda.webm",
     github: "https://github.com/Sztakler/driver-license-uwr",
     year: '2023',
@@ -47,23 +45,6 @@ const projects = ref({
     description: [
       `A friend and I once discussed apps for preparing for the driver's license exam. Most of them seemed outdated, offered little, and worst of all, required payment. We both agreed that it didn't have to be this way. Seeking a solution, we enlisted the help of a friend studying Graphic Design. Together, we set out to create something fresh, modern, and completely free for everyone.`,
       `Our collaboration resulted in a sleek, user-friendly app featuring a training mode, a realistic simulation of the theoretical exam, a comprehensive textbook, and a user profile to track progress and revisit challenging questions. This project also served as the centerpiece of my diploma thesis, reflecting our dedication to enhancing the user experience.`,
-    ],
-    visible: false,
-  },
-  "chujodoro": {
-    id: 2,
-    media: "vagabondoro.webm",
-    github: "https://github.com/Sztakler/vagabondoro-timer",
-    year: '2024',
-    category: 'Web Design & Development',
-    tags: ['VueJS', 'CSS', 'Figma'],
-    title: 'chujodoro',
-    description: [
-      `Seeking a solution for managing my work time and tasks, I developed an application to refine my skills in TypeScript and Vue. Inspired by the minimalist style of a Vagabond manga panel and the serene Kanagawa theme of Neovim, the app aims to minimize distractions and boost productivity.
-`,
-      `Key features include effortless task list editing, task prioritization, and a dedicated timer that tracks "pomos" (pomodoro sessions). The timer seamlessly transitions between work sessions and breaks, prompting a long break after four pomos. Users can estimate task completion times and manage tasks with ease, including hiding completed tasks for enhanced focus.
-`,
-      `Designed with mobile usability in mind, the app ensures a responsive experience across devices.`,
     ],
     visible: false,
   },
@@ -81,8 +62,40 @@ const projects = ref({
     ],
     visible: false,
   },
-  "default": {
+  "lampa": {
+    id: 4,
+    media: "lampa.webm",
+    github: "https://github.com/Sztakler/Lampa",
+    year: '2024',
+    category: 'Web Design & Development',
+    tags: ['NuxtJS', "TailwindCSS", 'Figma'],
+    title: 'Lampa',
+    description: [
+      `This summer's heat inspired my friends and me to get creative with ways to lift our spirits during those sweltering days. We started coming up with puns and wordplay to describe the weather, most notably calling high temperatures "lampa" (eng. "lamp"). This sparked the idea for my summer project: a mobile and desktop weather app called "Czy jest dzisiaj lampa?" (eng. "Is it a lamp today?"), designed to describe current conditions with humor.`,
+      `I opted for a minimalistic, almost brutalist design in monochrome, using only black and white to eliminate distractions and make the weather details instantly accessible.`,
+      `The application was built with NuxtJS and styled using TailwindCSS for fast, scalable development. Initially, I used the OpenWeather API, but I ran into a frustrating bug that made the sunrise and sunset data unreliable. To work around this, I integrated the Sunrise-Sunset API, achieving accurate results.`,
+      `The app is still a work in progress. While it functions fully as a weather app, it currently lacks the humorous descriptions I have in mind. If you have any ideas for weather puns, don’t hesitate to send me an email—I’d love to hear them!`
+    ],
+    visible: false,
+  },  "vagabondoro": {
     id: 5,
+    media: "vagabondoro.webm",
+    github: "https://github.com/Sztakler/vagabondoro-timer",
+    year: '2024',
+    category: 'Web Design & Development',
+    tags: ['VueJS', 'CSS', 'Figma'],
+    title: 'vagabondoro',
+    description: [
+      `Seeking a solution for managing my work time and tasks, I developed an application to refine my skills in TypeScript and Vue. Inspired by the minimalist style of a Vagabond manga panel and the serene Kanagawa theme of Neovim, the app aims to minimize distractions and boost productivity.
+`,
+      `Key features include effortless task list editing, task prioritization, and a dedicated timer that tracks "pomos" (pomodoro sessions). The timer seamlessly transitions between work sessions and breaks, prompting a long break after four pomos. Users can estimate task completion times and manage tasks with ease, including hiding completed tasks for enhanced focus.
+`,
+      `Designed with mobile usability in mind, the app ensures a responsive experience across devices.`,
+    ],
+    visible: false,
+  },
+  "default": {
+    id: 6,
     media: "",
     github: "",
     year: '',
@@ -94,6 +107,7 @@ const projects = ref({
 });
 
 const currentProject = ref(projects.value['default']);
+const loading = ref(false);
 
 function updateCurrentProject(key) {
   if (currentProject.value === projects.value[key]) {
@@ -129,6 +143,10 @@ function shouldShowProject(index) {
   return !isProjectExpanded.value || currentProject.value.id === index;
 }
 
+function handleLoaded() {
+  loading.value  = false;
+}
+
 function enter(el) {
   el.style.height = '0';
   setTimeout(() => {
@@ -142,6 +160,10 @@ function leave(el) {
     el.style.height = '0';
   });
 }
+
+watch(() => currentProject.value.media, () => {
+  loading.value = true;
+});
 </script>
 
 <template>
@@ -176,7 +198,8 @@ function leave(el) {
     </div>
 
     <aside class="media">
-      <video :src="getMediaSrc()" autoplay loop preload="auto" />
+      <div v-if="loading" class="loader" />
+      <video v-show="!loading" @loadeddata="handleLoaded"  :src="getMediaSrc()" autoplay loop preload="auto" />
     </aside>
   </article>
 </template>
@@ -204,11 +227,23 @@ article {
   flex: 4;
   transition: all 0.5s ease;
   overflow-y: scroll;
-  scrollbar-width: "4px";
+  padding-right: 32px;
 }
 
-.projects::-webkit-scrollbar {
-background: transparent;
+::-webkit-scrollbar {
+  width: 4px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+/* suwak - czarna kreska */
+::-webkit-scrollbar-thumb {
+  background-color: #808080;
+  border-radius: 0;
+  border: none;
 }
 
 button {
@@ -321,7 +356,12 @@ span {
 
 aside {
   flex: 5;
-}
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  aspect-ratio: 16/9;
+  }
+
 
 aside>video {
   width: 100%;
@@ -404,6 +444,33 @@ aside>video {
 
   .project-category {
     font-size: 0.8rem;
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 0; /* ukrywa tekst */
+}
+
+.loader::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 5px solid #808080;
+  border-top-color: #080808; /* fajny niebieski kolor */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
