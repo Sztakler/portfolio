@@ -508,71 +508,35 @@ void main() {
 
 
   float gray = (shade + 1.0) * 0.5; // z -1..1 do 0..1
-   // Bayer 4x4 dithering matrix (0–15), znormalizowane do 0..1
-   int x = int(mod(gl_FragCoord.x, 4.0));
-   int y = int(mod(gl_FragCoord.y, 4.0));
- 
-   float thresholdMatrix[16];
-   thresholdMatrix[0] = 0.0 / 16.0;
-   thresholdMatrix[1] = 8.0 / 16.0;
-   thresholdMatrix[2] = 2.0 / 16.0;
-   thresholdMatrix[3] = 10.0 / 16.0;
-   thresholdMatrix[4] = 12.0 / 16.0;
-   thresholdMatrix[5] = 4.0 / 16.0;
-   thresholdMatrix[6] = 14.0 / 16.0;
-   thresholdMatrix[7] = 6.0 / 16.0;
-   thresholdMatrix[8] = 3.0 / 16.0;
-   thresholdMatrix[9] = 11.0 / 16.0;
-   thresholdMatrix[10] = 1.0 / 16.0;
-   thresholdMatrix[11] = 9.0 / 16.0;
-   thresholdMatrix[12] = 15.0 / 16.0;
-   thresholdMatrix[13] = 7.0 / 16.0;
-   thresholdMatrix[14] = 13.0 / 16.0;
-   thresholdMatrix[15] = 5.0 / 16.0;
- 
-   int idx = y * 4 + x;
-   float threshold = thresholdMatrix[idx];
- 
-   float dithered = gray < threshold ? 0.0 : 1.0;
+  // Bayer 4x4 dithering matrix (0–15), znormalizowane do 0..1
+  int x = int(mod(gl_FragCoord.x, 4.0));
+  int y = int(mod(gl_FragCoord.y, 4.0));
 
-  //gl_FragColor = vec4(colormap(shade).rgb , 1.0);
+  float thresholdMatrix[16];
+  thresholdMatrix[0] = 0.0 / 16.0;
+  thresholdMatrix[1] = 8.0 / 16.0;
+  thresholdMatrix[2] = 2.0 / 16.0;
+  thresholdMatrix[3] = 10.0 / 16.0;
+  thresholdMatrix[4] = 12.0 / 16.0;
+  thresholdMatrix[5] = 4.0 / 16.0;
+  thresholdMatrix[6] = 14.0 / 16.0;
+  thresholdMatrix[7] = 6.0 / 16.0;
+  thresholdMatrix[8] = 3.0 / 16.0;
+  thresholdMatrix[9] = 11.0 / 16.0;
+  thresholdMatrix[10] = 1.0 / 16.0;
+  thresholdMatrix[11] = 9.0 / 16.0;
+  thresholdMatrix[12] = 15.0 / 16.0;
+  thresholdMatrix[13] = 7.0 / 16.0;
+  thresholdMatrix[14] = 13.0 / 16.0;
+  thresholdMatrix[15] = 5.0 / 16.0;
+
+  int idx = y * 4 + x;
+  float threshold = thresholdMatrix[idx];
+
+  float dithered = gray < threshold ? 0.0 : 1.0;
+
   gl_FragColor = vec4(colormap(shade).rgb , 1.0);
 }
-
-// void main() {
-  // float pn = pnoise(vUv + time * 0.1, vec3(10.));
-  // vec4 noiseColor = vec4(pn, pn, pn, 1.0);
-// 
-  // float gray = (pn + 1.0) * 0.5; // z -1..1 do 0..1
-// 
-  // // Bayer 4x4 dithering matrix (0–15), znormalizowane do 0..1
-  // int x = int(mod(gl_FragCoord.x, 4.0));
-  // int y = int(mod(gl_FragCoord.y, 4.0));
-// 
-  // float thresholdMatrix[16];
-  // thresholdMatrix[0] = 0.0 / 16.0;
-  // thresholdMatrix[1] = 8.0 / 16.0;
-  // thresholdMatrix[2] = 2.0 / 16.0;
-  // thresholdMatrix[3] = 10.0 / 16.0;
-  // thresholdMatrix[4] = 12.0 / 16.0;
-  // thresholdMatrix[5] = 4.0 / 16.0;
-  // thresholdMatrix[6] = 14.0 / 16.0;
-  // thresholdMatrix[7] = 6.0 / 16.0;
-  // thresholdMatrix[8] = 3.0 / 16.0;
-  // thresholdMatrix[9] = 11.0 / 16.0;
-  // thresholdMatrix[10] = 1.0 / 16.0;
-  // thresholdMatrix[11] = 9.0 / 16.0;
-  // thresholdMatrix[12] = 15.0 / 16.0;
-  // thresholdMatrix[13] = 7.0 / 16.0;
-  // thresholdMatrix[14] = 13.0 / 16.0;
-  // thresholdMatrix[15] = 5.0 / 16.0;
-// 
-  // int idx = y * 4 + x;
-  // float threshold = thresholdMatrix[idx];
-// 
-  // float dithered = gray < threshold ? 0.0 : 1.0;
-  // gl_FragColor = (noiseColor) * dithered * vec4(1.0, 0.0, 1.0);
-// }
 `
 }
 
