@@ -112,3 +112,19 @@ a:hover {
     gap: 1rem;
   }
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* suwak - czarna kreska */
+::-webkit-scrollbar-thumb {
+  background-color: #808080;
+  border-radius: 0;
+  border: none;
+}

@@ -218,6 +218,7 @@ article {
   flex-direction: row;
   align-items: flex-start;
   height: 100%;
+  padding-bottom: 100px;
 }
 
 .projects {
@@ -228,22 +229,6 @@ article {
   transition: all 0.5s ease;
   overflow-y: scroll;
   padding-right: 32px;
-}
-
-::-webkit-scrollbar {
-  width: 4px;
-  background: transparent;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent; 
-}
-
-/* suwak - czarna kreska */
-::-webkit-scrollbar-thumb {
-  background-color: #808080;
-  border-radius: 0;
-  border: none;
 }
 
 button {

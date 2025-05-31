@@ -4,30 +4,25 @@ export default {}
 
 <template>
   <article>
-    <img src="../assets/cv-morda.png" />
+    <img src="../assets/portrait.png" />
     <div class="text-content">
       <header>
-        <img class="header-img" src="../assets/cv-morda.png" />
-        <h2>Hi, Krystian here ;)</h2>
+        <img class="header-img" src="../assets/portrait.png" />
+        <h2>Hi, Krystian here 😉</h2>
       </header>
       <div class="description">
-        <p>I profoundly believe that beautiful design and good design are the same thing. As a designer and developer I
-          strive to create the most visually pleasing and ergonomic interfaces possible.</p>
-        <p>For web development my preferred tools are <a href="https://vuejs.org/" target="_blank">Vue.js</a> and <a
-            href="https://sass-lang.com/" target="_blank">Sass</a>. Most of my recent projects have been built using these
-          technologies.
-          I'm also experienced
-          with
-          <a href="https://react.dev/" target="_blank">React</a>
-          and <a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a>.
+        <p>Experienced Fullstack Developer with a strong foundation in systems programming, web technologies, and game development. Proficient in C++, Python, and TypeScript, I have hands-on experience building responsive web apps, scalable backend systems, and human-centered tools. My day-to-day work primarily involves React, React Native, Vue, and TailwindCSS.</p>
+        <p>I'm also the Co-founder and lead developer of Kiki/Bouba, an indie studio crafting psychological horror games with a focus on atmosphere, branching narratives, and minimalist UI/UX. Passionate about open-source collaboration, functional aesthetics, and building meaningful products where technology meets emotion.
         </p>
-        <p>I'm the founder and developer of a small indie game studio called Kiki/Bouba. Our common belief is that games
-          can
-          be a form of art, and we aim to create experiences that are both emotionally engaging and provide satisfying
-          gameplay. We strive to elevate user experience through engaging, aesthetic designs and a strong focus on
-          ergonomics
-          and functionality.
-        </p>
+      </div>
+      <div class="contact">
+      <h2>What is going on lately?</h2>
+        <p>
+<span class="bold">Redi</span> 🏃: A sports tracker I'm developing with Kiki/Bouba and a fellow designer. Redi aims to boost motivation for regular physical activity and offers social features, drawing inspiration from apps like Strava and Duolingo. My ongoing psychology studies play a key role here, allowing me to integrate psychological insights to enhance user engagement and motivation.
+</p>
+<p>
+<span class="bold">No Longer Human</span> 🕷️: A psychological horror game set in a flood-stricken post-Soviet city, developed under the Kiki/Bouba studio. Here, I serve as Game Designer, Programmer, Lead of the Writing Team, and overall Team Lead, ensuring a cohesive and immersive experience.
+</p>
       </div>
       <div class="contact">
         <h2>Want to talk?</h2>
@@ -54,9 +49,10 @@ article {
   width: 100%;
   gap: 4rem !important;
   line-height: 160%;
-  overflow-y: scroll;
+  overflow-y: none;
   height: 100%;
   scrollbar-width: none;
+  padding-bottom: 100px;
 }
 
 article::-webkit-scrollbar {
@@ -67,6 +63,8 @@ article::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  overflow-y: scroll;
+  padding-right: 32px;
 }
 
 .description {
@@ -91,7 +89,7 @@ img {
   height: auto;
   width: auto;
   object-fit: cover;
-  max-height: 500px;
+  max-height: 450px;
 }
 
 .header-img {
@@ -117,6 +115,10 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+span.bold {
+  font-weight: 600;
 }
 
 @media (max-width: 1366px) {
