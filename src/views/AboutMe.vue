@@ -4,10 +4,10 @@ export default {}
 
 <template>
   <article>
-    <img src="../assets/portrait.png" />
+    <img src="../assets/portrait.jpg" />
     <div class="text-content">
       <header>
-        <img class="header-img" src="../assets/portrait.png" />
+        <img class="header-img" src="../assets/portrait.jpg" />
         <h2>Hi, Krystian here 😉</h2>
       </header>
       <div class="description">
